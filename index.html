@@ -1,0 +1,2245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trilogy Homes - Premium Rentals & Luxury Living</title>
+    
+    <!-- Meta Tags for SEO -->
+    <meta name="description" content="Trilogy Homes - Premium apartment and car rentals with luxury amenities, professional service, and unmatched quality in Lagos, Nigeria.">
+    <meta name="keywords" content="luxury apartments, car rental, premium housing, Lagos rentals, Trilogy Homes">
+    <meta name="author" content="Trilogy Homes">
+    <meta property="og:title" content="Trilogy Homes - Premium Rentals & Luxury Living">
+    <meta property="og:description" content="Experience luxury living with our premium apartments and car rental services.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:url" content="https://trilogyhomes.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+    
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    
+    <!-- Three.js for 3D effects -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2d5a87;
+            --accent-color: #ffd700;
+            --accent-hover: #ffed4e;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --white: #ffffff;
+            --light-bg: #f7fafc;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.07);
+            --shadow-medium: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --shadow-heavy: 0 20px 40px rgba(0, 0, 0, 0.15);
+            --border-radius: 20px;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--light-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-primary);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-content {
+            text-align: center;
+            color: white;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Enhanced Navbar */
+        .navbar {
+            background: rgba(26, 54, 93, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 0;
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .navbar.scrolled {
+            background: rgba(26, 54, 93, 0.98);
+            padding: 0.5rem 0;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: white !important;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--gradient-accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .navbar-brand:hover .brand-icon {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            padding: 8px 16px !important;
+            border-radius: 25px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-accent);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .nav-link:hover::before {
+            left: 0;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+            transform: translateY(-2px);
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+        }
+
+        .contact-info a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-info a:hover {
+            color: var(--accent-hover);
+        }
+
+        /* Hero Section with Particles */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--gradient-primary);
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.8), rgba(45, 90, 135, 0.6));
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn-primary-custom {
+            background: var(--gradient-accent);
+            border: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary-custom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .btn-primary-custom:hover::before {
+            left: 0;
+        }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(79, 172, 254, 0.4);
+            color: var(--primary-color);
+        }
+
+        .btn-outline-custom {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            color: white;
+            font-weight: 600;
+            padding: 13px 35px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-outline-custom:hover {
+            background: white;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            bottom: 30%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Stats Counter */
+        .stats-section {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+            opacity: 0.3;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            display: block;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* Enhanced Services Section */
+        .services-section {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-accent);
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-accent);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .service-description {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .service-features li {
+            padding: 8px 0;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            color: var(--accent-color);
+            font-weight: bold;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        /* Core Values with Enhanced Design */
+        .values-section {
+            padding: 120px 0;
+            background: white;
+            position: relative;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .value-card {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: var(--transition);
+            transform: rotate(45deg);
+        }
+
+        .value-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-primary);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .value-card:hover .value-icon {
+            transform: scale(1.15) rotate(-5deg);
+        }
+
+        /* Enhanced Gallery */
+        .gallery-section {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-content {
+            text-align: center;
+            color: white;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-content {
+            transform: translateY(0);
+        }
+
+        /* Enhanced Testimonials */
+        .testimonials-section {
+            padding: 120px 0;
+            background: white;
+        }
+
+        .testimonial-slider {
+            margin-top: 60px;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 20px;
+            position: relative;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .testimonial-quote {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+            font-style: italic;
+            position: relative;
+        }
+
+        .testimonial-quote::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--accent-color);
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-color);
+        }
+
+        .author-info h5 {
+            margin: 0;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .author-info p {
+            margin: 0;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .rating {
+            display: flex;
+            gap: 2px;
+            margin-top: 5px;
+        }
+
+        .rating i {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+        }
+
+        /* Enhanced CTA Section */
+        .cta-section {
+            padding: 120px 0;
+            background: var(--gradient-primary);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>') repeat;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .countdown-timer {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 600px;
+            backdrop-filter: blur(10px);
+        }
+
+        .countdown-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .countdown-item {
+            text-align: center;
+        }
+
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            display: block;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Enhanced Footer */
+        .footer {
+            background: linear-gradient(135deg, #1a365d 0%, #2d5a87 100%);
+            color: white;
+            padding: 80px 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>') repeat;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-section h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: var(--accent-color);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .social-link:hover {
+            background: var(--accent-color);
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 50px;
+            padding-top: 30px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 1000;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-heavy);
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary-custom,
+            .btn-outline-custom {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .stats-section {
+                padding: 60px 0;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .services-section,
+            .values-section,
+            .gallery-section,
+            .testimonials-section,
+            .cta-section {
+                padding: 80px 0;
+            }
+
+            .values-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .countdown-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .countdown-number {
+                font-size: 2rem;
+            }
+
+            .contact-info {
+                display: none;
+            }
+
+            .navbar-collapse {
+                background: rgba(26, 54, 93, 0.95);
+                border-radius: 15px;
+                margin-top: 15px;
+                padding: 20px;
+                backdrop-filter: blur(20px);
+            }
+        }
+
+        /* Advanced Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Custom Cursor */
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--accent-color);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.2s ease;
+            opacity: 0.5;
+        }
+
+        /* Interactive Map Styles */
+        .map-container {
+            height: 400px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+            background: linear-gradient(135deg, #e2e8f0, #cbd5e0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            position: relative;
+        }
+
+        .map-placeholder {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .map-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        /* Weather Widget Styles */
+        .weather-widget {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        /* Enhanced Swiper Styles */
+        .swiper {
+            padding-bottom: 50px;
+        }
+
+        .swiper-pagination-bullet {
+            background: var(--accent-color);
+            opacity: 0.5;
+        }
+
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        /* Notification Toast */
+        .toast-container {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+        .toast {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 10px;
+            box-shadow: var(--shadow-heavy);
+            border-left: 4px solid var(--accent-color);
+            transform: translateX(400px);
+            transition: var(--transition);
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        /* Preloader Enhancements */
+        .loading-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 20px;
+            opacity: 0.9;
+        }
+
+        .loading-progress {
+            width: 200px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+
+        .loading-bar {
+            height: 100%;
+            background: var(--accent-color);
+            border-radius: 2px;
+            animation: loadingProgress 3s ease-in-out;
+        }
+
+        @keyframes loadingProgress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Loading Trilogy Homes</div>
+            <div class="loading-progress">
+                <div class="loading-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Enhanced Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <div class="brand-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                Trilogy Homes
+            </a>
+            
+            <div class="contact-info d-none d-lg-flex">
+                <div>
+                    <i class="fas fa-phone"></i>
+                    <span>+234 808 988 7756</span>
+                </div>
+                <div>
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:trilogyrentals@gmail.com">trilogyrentals@gmail.com</a>
+                </div>
+            </div>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fas fa-bars text-white"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gallary.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Reviews</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="clientbooking.html">Book Now</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index1.html" style="background: var(--gradient-accent); color: var(--primary-color) !important; border-radius: 25px; padding: 8px 20px !important;">
+                            <i class="fas fa-tachometer-alt me-1"></i>Dashboard
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Enhanced Hero Section -->
+    <section class="hero" id="home">
+        <div id="particles-js"></div>
+        
+        <video autoplay muted loop class="hero-video">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        </video>
+        
+        <div class="hero-overlay"></div>
+        
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+        
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <h1 class="hero-title">Welcome to Trilogy Homes</h1>
+            <p class="hero-subtitle">Experience Luxury Living with Premium Apartments & Car Rentals</p>
+            <div class="hero-buttons">
+                <a href="clientbooking.html" class="btn-primary-custom">
+                    <i class="fas fa-calendar-check"></i>
+                    Book Now
+                </a>
+                <a href="https://matterport.com" target="_blank" class="btn-outline-custom">
+                    <i class="fas fa-cube"></i>
+                    Take a tour
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-bg"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                        <span class="stat-number" data-count="500">0</span>
+                        <div class="stat-label">Happy Clients</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                        <span class="stat-number" data-count="150">0</span>
+                        <div class="stat-label">Premium Properties</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                        <span class="stat-number" data-count="50">0</span>
+                        <div class="stat-label">Luxury Vehicles</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+                        <span class="stat-number" data-count="98">0</span>
+                        <div class="stat-label">Satisfaction Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Services Section -->
+    <!-- Bootstrap Icons CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Mvi5+PjvMCrUVnuvZ3B6K3Y9zDYHHZ5p+35N0W+AiYQAXxgWNNY+1RorK6FiFy7Wr2IRNdQhYFQ3kE0UbPq7xQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<!-- Services Section -->
+<section id="services" style="padding: 60px 20px; background-color: #fff;">
+    <div style="max-width: 1140px; margin: auto;">
+      
+      <!-- Header -->
+      <div style="text-align: center; margin-bottom: 40px;">
+        <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 15px; color: #333;">Our Premium Services</h2>
+        <p style="font-size: 16px; color: #6c757d;">
+          Explore our luxury lifestyle offerings crafted for comfort, convenience, and class.
+        </p>
+      </div>
+  
+      <!-- Services Grid -->
+      <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+  
+        <!-- Luxury Apartments -->
+        <div style="flex: 1 1 300px; background: #f8f9fa; border-radius: 12px; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+          <div style="font-size: 40px; color: #007bff; margin-bottom: 15px; text-align: center;">
+            🏢
+          </div>
+          <h3 style="text-align: center; font-size: 22px; font-weight: 600; margin-bottom: 10px;">Luxury Apartments</h3>
+          <p style="font-size: 15px; color: #555; margin-bottom: 15px;">
+            Step into a world of elegance. Our luxury apartments offer high-end finishes, comfort, and prime locations to suit your lifestyle.
+          </p>
+          <ul style="padding-left: 20px; color: #333;">
+            <li>Strategically located properties</li>
+            <li>Smart home features</li>
+            <li>24/7 concierge service</li>
+            <li>Flexible lease options</li>
+          </ul>
+        </div>
+  
+        <!-- Premium Car Rentals -->
+        <div style="flex: 1 1 300px; background: #f8f9fa; border-radius: 12px; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+          <div style="font-size: 40px; color: #28a745; margin-bottom: 15px; text-align: center;">
+            🚗
+          </div>
+          <h3 style="text-align: center; font-size: 22px; font-weight: 600; margin-bottom: 10px;">Premium Car Rentals</h3>
+          <p style="font-size: 15px; color: #555; margin-bottom: 15px;">
+            Whether for business or leisure, drive in style with our top-tier vehicles backed by responsive support and competitive pricing.
+          </p>
+          <ul style="padding-left: 20px; color: #333;">
+            <li>Executive and luxury models</li>
+            <li>Fully insured fleet</li>
+            <li>24/7 support & roadside assistance</li>
+            <li>Daily, weekly, or monthly rates</li>
+          </ul>
+        </div>
+  
+        <!-- Secure Booking -->
+        <div style="flex: 1 1 300px; background: #f8f9fa; border-radius: 12px; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+          <div style="font-size: 40px; color: #dc3545; margin-bottom: 15px; text-align: center;">
+            🔒
+          </div>
+          <h3 style="text-align: center; font-size: 22px; font-weight: 600; margin-bottom: 10px;">Secure Booking</h3>
+          <p style="font-size: 15px; color: #555; margin-bottom: 15px;">
+            Your peace of mind is our priority. Enjoy instant confirmations, secure payments, and full transparency throughout.
+          </p>
+          <ul style="padding-left: 20px; color: #333;">
+            <li>SSL-encrypted payments</li>
+            <li>Clear, upfront pricing</li>
+            <li>Instant confirmation system</li>
+            <li>Round-the-clock customer service</li>
+          </ul>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+<!-- Core Values Section -->
+<section id="about" style="padding: 60px 0; background-color: #f9f9f9;">
+    <div style="max-width: 1140px; margin: 0 auto; padding: 0 15px;">
+      <!-- Header -->
+      <div style="text-align: center; margin-bottom: 50px;">
+        <h2 style="font-size: 2.5rem; margin-bottom: 15px;">Our Core Values</h2>
+        <p style="font-size: 1.1rem; color: #666;">
+          What drives us forward – the pillars behind our premium offerings and exceptional customer care.
+        </p>
+      </div>
+  
+      <!-- Values Grid -->
+      <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;">
+        
+        <!-- Card Template Start -->
+        <div style="flex: 1 1 calc(33.333% - 30px); background: #fff; border-radius: 16px; padding: 25px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); text-align: center;">
+          <img src="https://img.icons8.com/ios-filled/100/fast.png" alt="Efficiency" style="width: 60px; height: 60px; margin-bottom: 15px;">
+          <h4 style="margin-bottom: 10px;">Efficiency</h4>
+          <p style="color: #666;">We deliver fast, streamlined services that maximize your time and comfort.</p>
+        </div>
+  
+        <div style="flex: 1 1 calc(33.333% - 30px); background: #fff; border-radius: 16px; padding: 25px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); text-align: center;">
+          <img src="https://img.icons8.com/ios-filled/100/checked.png" alt="Reliability" style="width: 60px; height: 60px; margin-bottom: 15px;">
+          <h4 style="margin-bottom: 10px;">Reliability</h4>
+          <p style="color: #666;">Count on us for consistent, dependable service – always and everywhere.</p>
+        </div>
+  
+        <div style="flex: 1 1 calc(33.333% - 30px); background: #fff; border-radius: 16px; padding: 25px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); text-align: center;">
+          <img src="https://img.icons8.com/ios-filled/100/security-checked.png" alt="Security" style="width: 60px; height: 60px; margin-bottom: 15px;">
+          <h4 style="margin-bottom: 10px;">Security</h4>
+          <p style="color: #666;">We protect your data, your transactions, and your peace of mind.</p>
+        </div>
+  
+        <div style="flex: 1 1 calc(33.333% - 30px); background: #fff; border-radius: 16px; padding: 25px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); text-align: center;">
+          <img src="https://img.icons8.com/ios-filled/100/group-foreground-selected.png" alt="Customer Focus" style="width: 60px; height: 60px; margin-bottom: 15px;">
+          <h4 style="margin-bottom: 10px;">Customer Focus</h4>
+          <p style="color: #666;">Our personalized approach puts your satisfaction at the heart of what we do.</p>
+        </div>
+  
+        <div style="flex: 1 1 calc(33.333% - 30px); background: #fff; border-radius: 16px; padding: 25px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); text-align: center;">
+          <img src="https://img.icons8.com/ios-filled/100/light-on.png" alt="Innovation" style="width: 60px; height: 60px; margin-bottom: 15px;">
+          <h4 style="margin-bottom: 10px;">Innovation</h4>
+          <p style="color: #666;">We embrace technology to deliver smarter, more responsive solutions.</p>
+        </div>
+  
+        <div style="flex: 1 1 calc(33.333% - 30px); background: #fff; border-radius: 16px; padding: 25px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); text-align: center;">
+          <img src="https://img.icons8.com/ios-filled/100/plant-under-rain.png" alt="Sustainability" style="width: 60px; height: 60px; margin-bottom: 15px;">
+          <h4 style="margin-bottom: 10px;">Sustainability</h4>
+          <p style="color: #666;">We invest in eco-conscious practices that promote a better tomorrow.</p>
+        </div>
+        <!-- Card Template End -->
+  
+      </div>
+    </div>
+  </section>
+  
+
+    <!-- Enhanced Gallery Section -->
+    <section id="gallery" style="padding: 50px 20px; background: #111; color: #fff; font-family: Arial, sans-serif;">
+        <h2 style="text-align: center; margin-bottom: 10px;">Featured Properties & Vehicles</h2>
+        <p style="text-align: center; margin-bottom: 30px;">Explore our premium collection of luxury apartments and high-end vehicles</p>
+      
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+          <div onclick="openModal(this)" data-title="Luxury Penthouse" data-desc="1 Bed • 2 Baths • ₦100,000/day" style="position: relative; width: 250px; cursor: pointer; overflow: hidden;">
+            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Luxury Penthouse" style="width: 100%; height: auto; border-radius: 10px; display: block;">
+            <div style="position: absolute; bottom: 0; background: rgba(0,0,0,0.6); color: #fff; width: 100%; padding: 10px; text-align: center;">
+              <h4 style="margin: 0;">Luxury Penthouse</h4>
+              <p style="margin: 5px 0;">1 Bed • 2 Baths • ₦100,000/day</p>
+            </div>
+          </div>
+      
+          <div onclick="openModal(this)" data-title="BMW X5" data-desc="Luxury SUV • ₦150,000/day" style="position: relative; width: 250px; cursor: pointer; overflow: hidden;">
+            <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="BMW X5" style="width: 100%; height: auto; border-radius: 10px; display: block;">
+            <div style="position: absolute; bottom: 0; background: rgba(0,0,0,0.6); color: #fff; width: 100%; padding: 10px; text-align: center;">
+              <h4 style="margin: 0;">BMW X5</h4>
+              <p style="margin: 5px 0;">Luxury SUV • ₦150,000/day</p>
+            </div>
+          </div>
+      
+          <div onclick="openModal(this)" data-title="Police Escort" data-desc="₦30,000/Trip" style="position: relative; width: 250px; cursor: pointer; overflow: hidden;">
+            <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Police Escort" style="width: 100%; height: auto; border-radius: 10px; display: block;">
+            <div style="position: absolute; bottom: 0; background: rgba(0,0,0,0.6); color: #fff; width: 100%; padding: 10px; text-align: center;">
+              <h4 style="margin: 0;">Police Escort</h4>
+              <p style="margin: 5px 0;">₦30,000/Trip</p>
+            </div>
+          </div>
+        </div>
+      
+        <!-- Modal -->
+        <div id="galleryModal" style="display: none; position: fixed; z-index: 999; padding-top: 60px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background: rgba(0,0,0,0.9);">
+          <span onclick="closeModal()" style="position: absolute; top: 20px; right: 35px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer;">&times;</span>
+          <img id="modalImage" alt="Preview" style="display: block; margin: auto; max-width: 90%; max-height: 60vh; border-radius: 10px;">
+          <div id="modalCaption" style="text-align: center; color: #fff; padding: 15px; font-size: 18px;"></div>
+          <div style="text-align: center; margin-top: 15px;">
+            <a href="#contact" style="display: inline-block; padding: 10px 20px; margin: 5px; font-size: 16px; background-color: #f5a623; color: white; border-radius: 5px; text-decoration: none;">Book Now</a>
+            <a href="#services" style="display: inline-block; padding: 10px 20px; margin: 5px; font-size: 16px; background-color: #ffffff33; color: #fff; border-radius: 5px; border: 1px solid #fff; text-decoration: none;">View More</a>
+          </div>
+        </div>
+      </section>
+      
+      <script>
+        function openModal(item) {
+          var modal = document.getElementById("galleryModal");
+          var modalImg = document.getElementById("modalImage");
+          var caption = document.getElementById("modalCaption");
+          modal.style.display = "block";
+          modalImg.src = item.querySelector('img').src;
+          caption.innerHTML = "<strong>" + item.dataset.title + "</strong><br>" + item.dataset.desc;
+        }
+      
+        function closeModal() {
+          document.getElementById("galleryModal").style.display = "none";
+        }
+      
+        window.onclick = function(e) {
+          var modal = document.getElementById("galleryModal");
+          if (e.target == modal) modal.style.display = "none";
+        }
+      </script>
+      
+
+    <!-- Enhanced Testimonials -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-title" data-aos="fade-up">What Our Clients Say</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                        Real experiences from our satisfied customers who trust us with their rental needs
+                    </p>
+                </div>
+            </div>
+            <div class="testimonial-slider">
+                <div class="swiper testimonialSwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-quote">
+                                    The apartment exceeded all my expectations. The location is perfect, amenities are top-notch, and the customer service is exceptional. I couldn't be happier with my choice!
+                                </div>
+                                <div class="testimonial-author">
+                                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Sarah Johnson" class="author-avatar">
+                                    <div class="author-info">
+                                        <h5>Sarah Johnson</h5>
+                                        <p>Business Executive</p>
+                                        <div class="rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-quote">
+                                    Amazing car rental experience! The vehicle was pristine, the booking process was seamless, and the staff went above and beyond to ensure my satisfaction. Highly recommended!
+                                </div>
+                                <div class="testimonial-author">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Michael Chen" class="author-avatar">
+                                    <div class="author-info">
+                                        <h5>Michael Chen</h5>
+                                        <p>Tech Entrepreneur</p>
+                                        <div class="rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-quote">
+                                    Professional service from start to finish. The team was responsive, helpful, and made the entire rental process stress-free. The quality of properties is outstanding!
+                                </div>
+                                <div class="testimonial-author">
+                                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Emily Rodriguez" class="author-avatar">
+                                    <div class="author-info">
+                                        <h5>Emily Rodriguez</h5>
+                                        <p>Marketing Director</p>
+                                        <div class="rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-quote">
+                                    I've been using their services for over a year now, and they consistently deliver excellence. The dashboard makes managing bookings so easy, and their support team is always available.
+                                </div>
+                                <div class="testimonial-author">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="James Wilson" class="author-avatar">
+                                    <div class="author-info">
+                                        <h5>James Wilson</h5>
+                                        <p>Investment Banker</p>
+                                        <div class="rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced CTA Section -->
+    <section class="cta-section" id="cta">
+        <div class="cta-bg"></div>
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title" data-aos="fade-up">Ready to Experience Luxury?</h2>
+                <p class="cta-subtitle" data-aos="fade-up" data-aos-delay="100">
+                    Book your premium apartment or luxury vehicle today and discover the Trilogy Homes difference
+                </p>
+                
+                <div class="countdown-timer" data-aos="fade-up" data-aos-delay="200">
+                    <h4>Special Launch Offer Ends In:</h4>
+                    <div class="countdown-grid">
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="days">00</span>
+                            <div class="countdown-label">Days</div>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="hours">00</span>
+                            <div class="countdown-label">Hours</div>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="minutes">00</span>
+                            <div class="countdown-label">Minutes</div>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="seconds">00</span>
+                            <div class="countdown-label">Seconds</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-buttons" data-aos="fade-up" data-aos-delay="300">
+                    <a href="index1.html" class="btn-primary-custom">
+                        <i class="fas fa-tachometer-alt"></i>
+                        Access Dashboard
+                    </a>
+                    <a href="contact.html" class="btn-outline-custom">
+                        <i class="fas fa-phone"></i>
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Contact & Map Section -->
+    <section class="services-section" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                        Ready to start your luxury rental experience? Contact us today
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mb-4">
+                    <div class="map-container" data-aos="fade-right">
+                        <div class="map-placeholder">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h4>Find Us in Lagos</h4>
+                            <p>Admiralty way, Lekki Phase one <br>Lagos, Nigeria</p>
+                            <div class="weather-widget">
+                                <i class="fas fa-sun"></i>
+                                <span>Lagos Weather: 28°C • Sunny</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="service-card" data-aos="fade-left">
+                        <div class="service-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3 class="service-title">Contact Information</h3>
+                        <div class="service-description">
+                            <p><strong>Phone:</strong> +234 808 988 7756</p>
+                            <p><strong>Email:</strong> trilogyrentals@gmail.com</p>
+                            <p><strong>Address:</strong> Admiralty way, Lekki Phase one, Lagos</p>
+                            <p><strong>Hours:</strong> Mon-Fri 9AM-6PM</p>
+                        </div>
+                        <div class="social-links">
+                            <a href="https://facebook.com" class="social-link" target="_blank">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://twitter.com" class="social-link" target="_blank">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://instagram.com" class="social-link" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://linkedin.com" class="social-link" target="_blank">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer class="footer">
+        <div class="footer-bg"></div>
+        <div class="container footer-content">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-section">
+                        <h4>About Trilogy Homes</h4>
+                        <p>Leading provider of luxury apartment and car rentals in Lagos, Nigeria. We combine premium quality with exceptional service to deliver unmatched rental experiences.</p>
+                        <div class="social-links">
+                            <a href="https://facebook.com" class="social-link" target="_blank">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://twitter.com" class="social-link" target="_blank">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://instagram.com" class="social-link" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://linkedin.com" class="social-link" target="_blank">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-section">
+                        <h4>Quick Links</h4>
+                        <ul class="footer-links">
+                            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                            <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                            <li><a href="services.html"><i class="fas fa-concierge-bell"></i> Services</a></li>
+                            <li><a href="gallary.html"><i class="fas fa-images"></i> Gallery</a></li>
+                            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-section">
+                        <h4>Services</h4>
+                        <ul class="footer-links">
+                            <li><a href="#"><i class="fas fa-building"></i> Luxury Apartments</a></li>
+                            <li><a href="#"><i class="fas fa-car"></i> Premium Car Rentals</a></li>
+                            <li><a href="#"><i class="fas fa-concierge-bell"></i> Concierge Services</a></li>
+                            <li><a href="#"><i class="fas fa-headset"></i> 24/7 Support</a></li>
+                            <li><a href="index1.html"><i class="fas fa-tachometer-alt"></i> Dashboard Access</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-section">
+                        <h4>Contact Info</h4>
+                        <ul class="footer-links">
+                            <li><a href="tel:+2348089887756"><i class="fas fa-phone"></i> +234 808 988 7756</a></li>
+                            <li><a href="mailto:trilogyrentals@gmail.com"><i class="fas fa-envelope"></i> trilogyrentals@gmail.com</a></li>
+                            <li><a href="#"><i class="fas fa-map-marker-alt"></i>Admiralty way, Lekki Phase one, Lagos</a></li>
+                            <li><a href="#"><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Trilogy Homes. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <a href="#home" class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Loading Screen
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loadingScreen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('loadingScreen').style.display = 'none';
+                }, 500);
+            }, 2000);
+        });
+
+        // Custom Cursor
+        const cursor = document.getElementById('cursor');
+        const cursorFollower = document.getElementById('cursorFollower');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            }, 100);
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Particles.js Configuration
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#ffffff' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5, random: false },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#ffffff',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 6,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'repulse' },
+                    onclick: { enable: true, mode: 'push' },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+
+        // Stats Counter Animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                const increment = target / 100;
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.textContent = Math.ceil(current);
+                        setTimeout(updateCounter, 20);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                updateCounter();
+            });
+        }
+
+        // Trigger counter animation when stats section is visible
+        const statsSection = document.querySelector('.stats-section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+        observer.observe(statsSection);
+
+        // Countdown Timer
+        function updateCountdown() {
+            const countDownDate = new Date("June 30, 2025 23:59:59").getTime();
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+
+            if (distance < 0) {
+                document.querySelector('.countdown-timer').innerHTML = "<h4>Offer Has Ended!</h4>";
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Testimonial Swiper
+        const testimonialSwiper = new Swiper('.testimonialSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                }
+            }
+        });
+
+        // Scroll to Top Button
+        const scrollTopBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger, TextPlugin);
+
+        // Hero text animation
+        gsap.from('.hero-title', {
+            duration: 1.5,
+            y: 100,
+            opacity: 0,
+            ease: 'power3.out'
+        });
+
+        gsap.from('.hero-subtitle', {
+            duration: 1.5,
+            y: 50,
+            opacity: 0,
+            delay: 0.5,
+            ease: 'power3.out'
+        });
+
+        gsap.from('.hero-buttons', {
+            duration: 1.5,
+            y: 30,
+            opacity: 0,
+            delay: 1,
+            ease: 'power3.out'
+        });
+
+        // Service cards animation
+        gsap.from('.service-card', {
+            scrollTrigger: {
+                trigger: '.services-section',
+                start: 'top 80%'
+            },
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            stagger: 0.2,
+            ease: 'power3.out'
+        });
+
+        // Value cards animation
+        gsap.from('.value-card', {
+            scrollTrigger: {
+                trigger: '.values-section',
+                start: 'top 80%'
+            },
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            stagger: 0.1,
+            ease: 'power3.out'
+        });
+
+        // Gallery items animation
+        gsap.from('.gallery-item', {
+            scrollTrigger: {
+                trigger: '.gallery-section',
+                start: 'top 80%'
+            },
+            duration: 1,
+            scale: 0.8,
+            opacity: 0,
+            stagger: 0.1,
+            ease: 'power3.out'
+        });
+
+        // Toast Notification System
+        function showToast(message, type = 'info') {
+            const toastContainer = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-info-circle"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            toastContainer.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 100);
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    toastContainer.removeChild(toast);
+                }, 400);
+            }, 4000);
+        }
+
+        // Show welcome toast
+        setTimeout(() => {
+            showToast('Welcome to Trilogy Homes! Explore our premium rental services.', 'success');
+        }, 3000);
+
+        // Enhanced Mobile Menu
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+
+        navbarToggler.addEventListener('click', () => {
+            setTimeout(() => {
+                if (navbarCollapse.classList.contains('show')) {
+                    gsap.from('.nav-link', {
+                        duration: 0.5,
+                        y: 20,
+                        opacity: 0,
+                        stagger: 0.1,
+                        ease: 'power3.out'
+                    });
+                }
+            }, 100);
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 992) {
+                    const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+                        hide: true
+                    });
+                }
+            });
+        });
+
+        // Parallax Effect for Hero Section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero-video');
+            const speed = scrolled * 0.5;
+            
+            if (parallax) {
+                parallax.style.transform = `translateY(${speed}px)`;
+            }
+        });
+
+        // Enhanced Gallery Lightbox Effect
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const img = item.querySelector('.gallery-image');
+                const content = item.querySelector('.gallery-content');
+                
+                // Create lightbox modal (simplified version)
+                const lightbox = document.createElement('div');
+                lightbox.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0,0,0,0.9);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 10000;
+                    cursor: pointer;
+                `;
+                
+                const lightboxImg = document.createElement('img');
+                lightboxImg.src = img.src;
+                lightboxImg.style.cssText = `
+                    max-width: 90%;
+                    max-height: 90%;
+                    object-fit: contain;
+                `;
+                
+                lightbox.appendChild(lightboxImg);
+                document.body.appendChild(lightbox);
+                
+                lightbox.addEventListener('click', () => {
+                    document.body.removeChild(lightbox);
+                });
+                
+                gsap.from(lightbox, {
+                    duration: 0.3,
+                    opacity: 0,
+                    ease: 'power3.out'
+                });
+                
+                gsap.from(lightboxImg, {
+                    duration: 0.5,
+                    scale: 0.8,
+                    ease: 'power3.out'
+                });
+            });
+        });
+
+        // Performance Optimization
+        const lazyImages = document.querySelectorAll('img[data-src]');
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.remove('lazy');
+                    imageObserver.unobserve(img);
+                }
+            });
+        });
+
+        lazyImages.forEach(img => imageObserver.observe(img));
+
+        // Enhanced Form Validation (if forms are added)
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        // Add dynamic year to footer
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentYear = new Date().getFullYear();
+            const footerText = document.querySelector('.footer-bottom p');
+            if (footerText) {
+                footerText.innerHTML = footerText.innerHTML.replace('2025', currentYear);
+            }
+        });
+
+        // Enhanced Error Handling
+        window.addEventListener('error', (e) => {
+            console.error('An error occurred:', e.error);
+            // Could show user-friendly error message
+        });
+
+        // Service Worker Registration (for PWA capabilities)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

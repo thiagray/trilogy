@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trilogy Homes - About Us</title>
+    
+    <!-- Meta Tags for SEO -->
+    <meta name="description" content="Learn about Trilogy Homes, a premier provider of luxury apartments and car rentals in Lagos, Nigeria, committed to excellence and innovation.">
+    <meta name="keywords" content="about Trilogy Homes, luxury rentals, Lagos real estate, premium car rentals">
+    <meta name="author" content="Trilogy Homes">
+    <meta property="og:title" content="Trilogy Homes - About Us">
+    <meta property="og:description" content="Discover the story behind Trilogy Homes, your trusted partner in luxury living and rentals.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:url" content="https://trilogyhomes.com/about.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+    
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    
+    <!-- Three.js for 3D effects -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2d5a87;
+            --accent-color: #ffd700;
+            --accent-hover: #ffed4e;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --white: #ffffff;
+            --light-bg: #f7fafc;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.07);
+            --shadow-medium: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --shadow-heavy: 0 20px 40px rgba(0, 0, 0, 0.15);
+            --border-radius: 20px;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--light-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-primary);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
+        }
+
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-content {
+            text-align: center;
+            color: white;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .navbar {
+            background: rgba(26, 54, 93, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 0;
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .navbar.scrolled {
+            background: rgba(26, 54, 93, 0.98);
+            padding: 0.5rem 0;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: white !important;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--gradient-accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .navbar-brand:hover .brand-icon {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            padding: 8px 16px !important;
+            border-radius: 25px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-accent);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .nav-link:hover::before {
+            left: 0;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+            transform: translateY(-2px);
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+        }
+
+        .contact-info a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-info a:hover {
+            color: var(--accent-hover);
+        }
+
+        .hero {
+            height: 80vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--gradient-primary);
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.8), rgba(45, 90, 135, 0.6));
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .btn-primary-custom {
+            background: var(--gradient-accent);
+            color: var(--primary-color) !important;
+            border: none;
+            padding: 12px 24px;
+            font-weight: 600;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .btn-primary-custom:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-outline-custom {
+            background: transparent;
+            color: var(--white) !important;
+            border: 2px solid var(--accent-color);
+            padding: 10px 22px;
+            font-weight: 600;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .btn-outline-custom:hover {
+            background: var(--accent-color);
+            color: var(--primary-color) !important;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .about-section {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            position: relative;
+        }
+
+        .mission-section {
+            padding: 120px 0;
+            background: white;
+            position: relative;
+        }
+
+        .team-section {
+            padding: 120px 0;
+            background: var(--gradient-primary);
+            color: white;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .about-content, .mission-content, .team-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p, .mission-content p {
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .team-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .team-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .team-card:hover .team-avatar {
+            transform: scale(1.1);
+        }
+
+        .team-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--white);
+        }
+
+        .team-role {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+        }
+
+        .team-social {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .team-social a {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .team-social a:hover {
+            color: var(--white);
+            transform: scale(1.2);
+        }
+
+        .divider-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            margin: 40px auto;
+            display: block;
+        }
+
+        .cta-section {
+            padding: 120px 0;
+            background: var(--gradient-secondary);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>') repeat;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #1a365d 0%, #2d5a87 100%);
+            color: white;
+            padding: 80px 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>') repeat;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-section h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: var(--accent-color);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .social-link:hover {
+            background: var(--accent-color);
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 50px;
+            padding-top: 30px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 1000;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-heavy);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: 60vh;
+            }
+            .hero-title {
+                font-size: clamp(2rem, 6vw, 3rem);
+            }
+            .hero-subtitle {
+                font-size: clamp(1rem, 2.5vw, 1.3rem);
+            }
+            .about-section, .mission-section, .team-section, .cta-section {
+                padding: 80px 0;
+            }
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            .divider-image {
+                height: 200px;
+            }
+            .contact-info {
+                display: none;
+            }
+            .navbar-collapse {
+                background: rgba(26, 54, 93, 0.95);
+                border-radius: 15px;
+                margin-top: 15px;
+                padding: 20px;
+                backdrop-filter: blur(20px);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--accent-color);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.2s ease;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Loading About Page</div>
+            <div class="loading-progress">
+                <div class="loading-bar" style="width: 100%; height: 5px; background: var(--white); animation: progress 2s linear infinite;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
+    <!-- Enhanced Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <div class="brand-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                Trilogy Homes
+            </a>
+            
+            <div class="contact-info d-none d-lg-flex">
+                <div>
+                    <i class="fas fa-phone"></i>
+                    <span>+234 808 988 7756</span>
+                </div>
+                <div>
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:trilogyrentals@gmail.com">trilogyrentals@gmail.com</a>
+                </div>
+            </div>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fas fa-bars text-white"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gallary.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Reviews</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="clientbooking.html">Book Now</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index1.html" style="background: var(--gradient-accent); color: var(--primary-color) !important; border-radius: 25px; padding: 8px 20px !important;">
+                            <i class="fas fa-tachometer-alt me-1"></i>Dashboard
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Enhanced Hero Section -->
+    <section class="hero" id="home">
+        <div id="particles-js"></div>
+        
+        <video autoplay muted loop class="hero-video">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <h1 class="hero-title">About Us</h1>
+            <p class="hero-subtitle">Discover the Story Behind Trilogy Homes</p>
+            <div class="hero-buttons">
+                <a href="#mission" class="btn-primary-custom">
+                    <i class="fas fa-info-circle"></i>
+                    Learn More
+                </a>
+                <a href="contact.html" class="btn-outline-custom">
+                    <i class="fas fa-envelope"></i>
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+   <!-- Bootstrap Icons CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<!-- AOS CDN -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>AOS.init();</script>
+
+<!-- Video Background Section -->
+<section style="position: relative; height: 100vh; overflow: hidden;">
+
+  <!-- Desktop Video -->
+  <video id="bgVideo" autoplay muted loop playsinline class="desktop-video" style="position: absolute; width: 100%; height: 100%; object-fit: cover; z-index: -2;">
+    <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+
+  <!-- Mobile Video -->
+  <video id="bgVideoMobile" autoplay muted loop playsinline class="mobile-video" style="position: absolute; width: 100%; height: 100%; object-fit: cover; display: none; z-index: -2;">
+    <source src="https://www.w3schools.com/howto/forest.mp4" type="video/mp4">
+  </video>
+
+  <!-- Dark Overlay -->
+  <div style="position: absolute; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: -1;"></div>
+
+  <!-- Mute/Unmute Button -->
+  <button onclick="toggleMute()" id="muteButton" style="position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.7); border: none; border-radius: 50%; padding: 10px; font-size: 20px; cursor: pointer; z-index: 5;">
+    <i id="muteIcon" class="bi bi-volume-mute-fill"></i>
+  </button>
+
+  <!-- Content -->
+  <div style="max-width: 1200px; margin: 0 auto; padding: 80px 20px; text-align: center; color: #fff;">
+    <h2 style="font-size: 36px;" data-aos="fade-down">
+      <i class="bi bi-house-door-fill text-warning"></i> Who We Are
+    </h2>
+    <p style="font-size: 18px;" data-aos="fade-down" data-aos-delay="100">
+      A journey of excellence in luxury rentals
+    </p>
+    <div style="max-width: 800px; margin: 0 auto;" data-aos="fade-up" data-aos-delay="200">
+      <p><i class="bi bi-building text-primary"></i> Founded in 2020, <strong>Trilogy Homes</strong> redefines luxury rentals with premium apartments and car services in Lagos, Nigeria.</p>
+      <p><i class="bi bi-people-fill text-primary"></i> Our expert team guarantees a seamless and stylish rental experience from booking to check-out.</p>
+    </div>
+
+    <!-- CTA Buttons -->
+    <div style="margin-top: 30px;" data-aos="zoom-in" data-aos-delay="300">
+      <a href="gallary.html" class="btn btn-primary me-2"><i class="bi bi-building"></i> View Apartments</a>
+      <a href="gallary.html" class="btn btn-warning text-dark"><i class="bi bi-car-front-fill"></i> Explore Car Rentals</a>
+    </div>
+  </div>
+</section>
+
+<!-- JS for Mobile Detection and Mute Toggle -->
+<script>
+  // Detect mobile and switch video
+  const desktopVideo = document.getElementById("bgVideo");
+  const mobileVideo = document.getElementById("bgVideoMobile");
+
+  if (/Mobi|Android/i.test(navigator.userAgent)) {
+    desktopVideo.style.display = "none";
+    mobileVideo.style.display = "block";
+  }
+
+  // Mute/Unmute Toggle
+  function toggleMute() {
+    const video = desktopVideo.style.display === "none" ? mobileVideo : desktopVideo;
+    video.muted = !video.muted;
+    document.getElementById("muteIcon").className = video.muted ? "bi bi-volume-mute-fill" : "bi bi-volume-up-fill";
+  }
+</script>
+
+    <!-- Mission Section -->
+  <!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<!-- AOS Library -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>AOS.init();</script>
+
+<!-- Mission & Vision Section with Video Background -->
+<section style="position: relative; height: 100vh; overflow: hidden;">
+
+  <!-- Desktop Video -->
+  <video id="mvVideoDesktop" autoplay muted loop playsinline style="position: absolute; width: 100%; height: 100%; object-fit: cover; z-index: -2;">
+    <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+
+  <!-- Mobile Video -->
+  <video id="mvVideoMobile" autoplay muted loop playsinline style="position: absolute; width: 100%; height: 100%; object-fit: cover; display: none; z-index: -2;">
+    <source src="https://www.w3schools.com/howto/forest.mp4" type="video/mp4">
+  </video>
+
+  <!-- Overlay -->
+  <div style="position: absolute; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.65); z-index: -1;"></div>
+
+  <!-- Mute Button -->
+  <button onclick="toggleMV()" id="mvMuteBtn" style="position: absolute; top: 20px; right: 20px; z-index: 5; background: rgba(255,255,255,0.7); border: none; border-radius: 50%; padding: 10px; font-size: 20px; cursor: pointer;">
+    <i id="mvMuteIcon" class="bi bi-volume-mute-fill"></i>
+  </button>
+
+  <!-- Content -->
+  <div style="max-width: 1200px; margin: 0 auto; padding: 80px 20px; color: #fff; text-align: center;">
+    <h2 data-aos="fade-down" class="mb-3" style="font-size: 36px;">
+      <i class="bi bi-lightbulb-fill text-warning"></i> Our Mission & Vision
+    </h2>
+    <p data-aos="fade-down" data-aos-delay="100" style="font-size: 18px; margin-bottom: 30px;">Guiding principles that fuel our passion for excellence</p>
+
+    <div data-aos="fade-up" data-aos-delay="200" style="max-width: 900px; margin: 0 auto;">
+      <p style="font-size: 20px; margin-bottom: 20px;"><i class="bi bi-bullseye text-info"></i> 
+        <strong>Mission:</strong> To redefine the standard of luxury living and car rentals in Africa by delivering innovative, customer-first experiences. We combine elegance, technology, and sustainability to ensure our clients enjoy ultimate comfort, style, and reliability—every single day.
+      </p>
+      <p style="font-size: 20px;"><i class="bi bi-eye-fill text-success"></i> 
+        <strong>Vision:</strong> To become Africa’s most trusted brand for premium accommodations and vehicles—setting benchmarks in hospitality and mobility while expanding our reach across the continent.
+      </p>
+    </div>
+
+    <!-- CTA Button -->
+    <div data-aos="zoom-in" data-aos-delay="300" style="margin-top: 40px;">
+      <a href="contact.html" class="btn btn-warning btn-lg shadow" style="font-weight: bold; border-radius: 50px; padding: 12px 30px;">
+        <i class="bi bi-arrow-right-circle-fill me-2"></i> Join Our Journey
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Divider Image 
+<img src="https://victoriacresthomes.ng/wp-content/uploads/2024/09/Copy-of-Terraces1-1.jpg" alt="Modern Suite" class="divider-image" data-aos="zoom-in" data-aos-delay="200"
+style="width: 100%; max-height: 300px; object-fit: cover;" 
+onerror="this.src='https://via.placeholder.com/1200x300?text=Modern+Suite';">-->
+
+<!-- JS for Mute Button and Mobile Video -->
+<script>
+  const mvDesktop = document.getElementById("mvVideoDesktop");
+  const mvMobile = document.getElementById("mvVideoMobile");
+
+  // Switch to mobile video if needed
+  if (/Mobi|Android/i.test(navigator.userAgent)) {
+    mvDesktop.style.display = "none";
+    mvMobile.style.display = "block";
+  }
+
+  function toggleMV() {
+    const video = mvDesktop.style.display === "none" ? mvMobile : mvDesktop;
+    video.muted = !video.muted;
+    document.getElementById("mvMuteIcon").className = video.muted ? "bi bi-volume-mute-fill" : "bi bi-volume-up-fill";
+  }
+</script>
+
+    <!-- Team Section -->
+    <section style="background-color: #1a202c; padding: 60px 20px; font-family: Arial, sans-serif;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+          <div style="text-align: center; margin-bottom: 40px;">
+            <h2 style="color: white; font-size: 36px; margin-bottom: 10px;">Meet Our Team</h2>
+            <p style="color: #cbd5e0; font-size: 18px;">Dedicated professionals driving our success</p>
+          </div>
+      
+          <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+            <!-- Team Member 1 -->
+            <div style="background: white; padding: 20px; border-radius: 10px; width: 300px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlSn9MCJyfH9xlOzX5RAvRaXH5W1-2v9gZqw&s" alt="John Doe" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover;" onerror="this.src='https://via.placeholder.com/150?text=John+Doe';">
+              <h4 style="margin-top: 15px; font-size: 20px; color: #1a202c;">John Doe</h4>
+              <p style="color: #4a5568;">CEO & Founder</p>
+              <div style="margin-top: 10px;">
+                <a href="#" style="margin-right: 10px; color: #0e76a8;"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" style="color: #1da1f2;"><i class="fab fa-twitter"></i></a>
+              </div>
+            </div>
+      
+            <!-- Team Member 2 -->
+            <div style="background: white; padding: 20px; border-radius: 10px; width: 300px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpbR0r4pf_PCeuJbInU8sIwNLHx8WmvusKNQ&s" alt="Jane Smith" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover;" onerror="this.src='https://via.placeholder.com/150?text=Jane+Smith';">
+              <h4 style="margin-top: 15px; font-size: 20px; color: #1a202c;">Jane Smith</h4>
+              <p style="color: #4a5568;">Operations Manager</p>
+              <div style="margin-top: 10px;">
+                <a href="#" style="margin-right: 10px; color: #0e76a8;"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" style="color: #e1306c;"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+      
+            <!-- Team Member 3 -->
+            <div style="background: white; padding: 20px; border-radius: 10px; width: 300px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVmZTihQmSJDQ6EtxgFlcOw2YO35KYrqShnw&s" alt="Michael Lee" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover;" onerror="this.src='https://via.placeholder.com/150?text=Michael+Lee';">
+              <h4 style="margin-top: 15px; font-size: 20px; color: #1a202c;">Michael Lee</h4>
+              <p style="color: #4a5568;">Customer Relations</p>
+              <div style="margin-top: 10px;">
+                <a href="#" style="margin-right: 10px; color: #0e76a8;"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" style="color: #1da1f2;"><i class="fab fa-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Make sure to include Font Awesome -->
+      <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+      
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-bg"></div>
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title" data-aos="fade-up">Join Our Journey</h2>
+                <p class="cta-subtitle" data-aos="fade-up" data-aos-delay="100">
+                    Become part of the Trilogy Homes family and experience luxury like never before
+                </p>
+                <div class="hero-buttons" data-aos="fade-up" data-aos-delay="200">
+                    <a href="clientbooking.html" class="btn-primary-custom">
+                        <i class="fas fa-calendar-check"></i>
+                        Book Now
+                    </a>
+                    <a href="contact.html" class="btn-outline-custom">
+                        <i class="fas fa-phone"></i>
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer class="footer">
+        <div class="footer-bg"></div>
+        <div class="container footer-content">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-section">
+                        <h4>About Trilogy Homes</h4>
+                        <p>Leading provider of luxury apartment and car rentals in Lagos, Nigeria. We combine premium quality with exceptional service to deliver unmatched rental experiences.</p>
+                        <div class="social-links">
+                            <a href="https://facebook.com" class="social-link" target="_blank">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://twitter.com" class="social-link" target="_blank">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://instagram.com" class="social-link" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://linkedin.com" class="social-link" target="_blank">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-section">
+                        <h4>Quick Links</h4>
+                        <ul class="footer-links">
+                            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                            <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                            <li><a href="services.html"><i class="fas fa-concierge-bell"></i> Services</a></li>
+                            <li><a href="gallary.html"><i class="fas fa-images"></i> Gallery</a></li>
+                            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-section">
+                        <h4>Services</h4>
+                        <ul class="footer-links">
+                            <li><a href="clientbooking.html"><i class="fas fa-building"></i> Luxury Apartments</a></li>
+                            <li><a href="clientbooking.html"><i class="fas fa-car"></i> Premium Car Rentals</a></li>
+                            <li><a href="contact.html"><i class="fas fa-concierge-bell"></i> Concierge Services</a></li>
+                            <li><a href="contact.html"><i class="fas fa-headset"></i> 24/7 Support</a></li>
+                            <li><a href="index1.html"><i class="fas fa-tachometer-alt"></i> Dashboard Access</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-section">
+                        <h4>Contact Info</h4>
+                        <ul class="footer-links">
+                            <li><a href="tel:+2348089887756"><i class="fas fa-phone"></i> +234 808 988 7756</a></li>
+                            <li><a href="mailto:trilogyrentals@gmail.com"><i class="fas fa-envelope"></i> trilogyrentals@gmail.com</a></li>
+                            <li><a href="#"><i class="fas fa-map-marker-alt"></i> Admiralty way, Lekki Phase one, Lagos</a></li>
+                            <li><a href="#"><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Trilogy Homes. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <a href="#home" class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Loading Screen
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                const loadingScreen = document.getElementById('loadingScreen');
+                if (loadingScreen) {
+                    loadingScreen.style.opacity = '0';
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                    }, 500);
+                }
+            }, 2000);
+        });
+
+        // Custom Cursor
+        const cursor = document.getElementById('cursor');
+        const cursorFollower = document.getElementById('cursorFollower');
+
+        if (cursor && cursorFollower) {
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                setTimeout(() => {
+                    cursorFollower.style.left = e.clientX + 'px';
+                    cursorFollower.style.top = e.clientY + 'px';
+                }, 100);
+            });
+        }
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        if (navbar) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+        }
+
+        // Smooth Scroll for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Particles.js
+        if (document.getElementById('particles-js')) {
+            particlesJS('particles-js', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: '#ffffff' },
+                    shape: { type: 'circle' },
+                    opacity: { value: 0.5, random: false },
+                    size: { value: 3, random: true },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: '#ffffff',
+                        opacity: 0.4,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 6,
+                        direction: 'none',
+                        random: false,
+                        straight: false,
+                        out_mode: 'out',
+                        bounce: false
+                    }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: {
+                        onhover: { enable: true, mode: 'repulse' },
+                        onclick: { enable: true, mode: 'push' },
+                        resize: true
+                    }
+                },
+                retina_detect: true
+            });
+        }
+
+        // Scroll to Top Button
+        const scrollTopBtn = document.getElementById('scrollTop');
+        if (scrollTopBtn) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    scrollTopBtn.classList.add('visible');
+                } else {
+                    scrollTopBtn.classList.remove('visible');
+                }
+            });
+        }
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger, TextPlugin);
+
+        gsap.from('.hero-title', {
+            duration: 1.5,
+            y: 100,
+            opacity: 0,
+            ease: 'power3.out'
+        });
+
+        gsap.from('.hero-subtitle', {
+            duration: 1.5,
+            y: 50,
+            opacity: 0,
+            delay: 0.5,
+            ease: 'power3.out'
+        });
+
+        gsap.from('.hero-buttons', {
+            duration: 1.5,
+            y: 30,
+            opacity: 0,
+            delay: 1,
+            ease: 'power3.out'
+        });
+
+        gsap.from('.about-content', {
+            scrollTrigger: {
+                trigger: '.about-section',
+                start: 'top 80%'
+            },
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            ease: 'power3.out'
+        });
+
+        gsap.from('.mission-content', {
+            scrollTrigger: {
+                trigger: '.mission-section',
+                start: 'top 80%'
+            },
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            ease: 'power3.out'
+        });
+
+        gsap.from('.team-card', {
+            scrollTrigger: {
+                trigger: '.team-section',
+                start: 'top 80%'
+            },
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            stagger: 0.1,
+            ease: 'power3.out'
+        });
+
+        gsap.from('.divider-image', {
+            scrollTrigger: {
+                trigger: '.divider-image',
+                start: 'top 80%'
+            },
+            duration: 1,
+            scale: 0.8,
+            opacity: 0,
+            ease: 'power3.out'
+        });
+
+        gsap.from('.cta-content', {
+            scrollTrigger: {
+                trigger: '.cta-section',
+                start: 'top 80%'
+            },
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            ease: 'power3.out'
+        });
+
+        // Navbar Toggler Animation
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+        if (navbarToggler && navbarCollapse) {
+            navbarToggler.addEventListener('click', () => {
+                setTimeout(() => {
+                    if (navbarCollapse.classList.contains('show')) {
+                        gsap.from('.nav-link', {
+                            duration: 0.5,
+                            y: 20,
+                            opacity: 0,
+                            stagger: 0.1,
+                            ease: 'power3.out'
+                        });
+                    }
+                }, 100);
+            });
+        }
+
+        // Close Mobile Navbar on Link Click
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 992 && navbarCollapse.classList.contains('show')) {
+                    const bsCollapse = new bootstrap.Collapse(navbarCollapse, { hide: true });
+                }
+            });
+        });
+
+        // Parallax Effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero-video');
+            if (parallax) {
+                const speed = scrolled * 0.5;
+                parallax.style.transform = `translateY(${speed}px)`;
+            }
+        });
+
+        // Update Footer Year
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentYear = new Date().getFullYear();
+            const footerText = document.querySelector('.footer-bottom p');
+            if (footerText) {
+                footerText.innerHTML = footerText.innerHTML.replace('2025', currentYear);
+            }
+        });
+
+        // Service Worker (Optional, requires sw.js file)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => console.log('SW registered: ', registration))
+                    .catch(registrationError => console.log('SW registration failed: ', registrationError));
+            });
+        }
+    </script>
+</body>
+</html>
