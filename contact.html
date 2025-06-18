@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trilogy Homes - Contact Us</title>
+    
+    <!-- Meta Tags for SEO -->
+    <meta name="description" content="Get in touch with Trilogy Homes for inquiries about luxury apartments, car rentals, and other services in Lagos, Nigeria.">
+    <meta name="keywords" content="Trilogy Homes contact, luxury apartments contact, car rentals contact, Lagos real estate contact">
+    <meta name="author" content="Trilogy Homes">
+    <meta property="og:title" content="Trilogy Homes - Contact Us">
+    <meta property="og:description" content="Contact us for personalized assistance with our premium services at Trilogy Homes.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:url" content="https://trilogyhomes.com/contact.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2d5a87;
+            --accent-color: #ffd700;
+            --accent-hover: #ffed4e;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --white: #ffffff;
+            --light-bg: #f7fafc;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.07);
+            --border-radius: 20px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.3s ease;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .navbar {
+            background: rgba(26, 54, 93, 0.95);
+            padding: 0.8rem 0;
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .navbar.scrolled {
+            background: rgba(26, 54, 93, 0.98);
+            padding: 0.4rem 0;
+            box-shadow: var(--shadow-light);
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.6rem;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-accent);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: var(--transition);
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            margin: 0 8px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .hero {
+            height: 60vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center/cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.7), rgba(45, 90, 135, 0.5));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            max-width: 700px;
+            padding: 0 15px;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .btn-primary-custom {
+            background: var(--gradient-accent);
+            color: var(--primary-color);
+            border: none;
+            padding: 10px 20px;
+            font-weight: 600;
+            border-radius: 20px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+        }
+
+        .btn-primary-custom:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .contact-section {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+
+        .contact-form {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            padding: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .form-control {
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 10px 15px;
+            font-size: 0.9rem;
+            width: 100%;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 5px rgba(45, 90, 135, 0.3);
+            outline: none;
+        }
+
+        .form-select {
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 10px 15px;
+            font-size: 0.9rem;
+            width: 100%;
+            transition: var(--transition);
+        }
+
+        .form-select:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 5px rgba(45, 90, 135, 0.3);
+            outline: none;
+        }
+
+        .btn-submit {
+            background: var(--gradient-accent);
+            color: var(--primary-color);
+            border: none;
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 20px;
+            width: 100%;
+            transition: var(--transition);
+        }
+
+        .btn-submit:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .contact-info {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .contact-info-item {
+            margin-bottom: 20px;
+        }
+
+        .contact-info-item i {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-info-item a {
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-info-item a:hover {
+            color: var(--secondary-color);
+        }
+
+        .map-section {
+            margin-top: 40px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+        }
+
+        .map-section iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #1a365d 0%, #2d5a87 100%);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>') repeat;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-section h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 40px;
+            padding-top: 20px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: 50vh;
+            }
+            .hero-title {
+                font-size: clamp(1.8rem, 5vw, 2.8rem);
+            }
+            .hero-subtitle {
+                font-size: clamp(0.9rem, 2vw, 1.2rem);
+            }
+            .contact-form {
+                padding: 20px;
+            }
+            .map-section iframe {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Enhanced Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <div class="brand-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                Trilogy Homes
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fas fa-bars text-white"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="clientbooking.html">Book Now</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Enhanced Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content" data-aos="fade-up">
+            <h1 class="hero-title">Contact Us</h1>
+            <p class="hero-subtitle">We’re here to assist you with your inquiries</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary-custom">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">Get in Touch</h2>
+            <p class="section-subtitle text-center" data-aos="fade-up" data-aos-delay="100">We’d love to hear from you. Fill out the form below or reach us directly.</p>
+
+            <!-- Contact Form -->
+            <div class="contact-form" data-aos="fade-up" data-aos-delay="200">
+                <form>
+                    <div class="form-group">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service" class="form-label">Service of Interest</label>
+                        <select class="form-select" id="service" required>
+                            <option value="" disabled selected>Select a service</option>
+                            <option value="luxury-apartments">Luxury Apartments</option>
+                            <option value="car-rentals">Premium Car Rentals</option>
+                            <option value="buy-bitcoin">Buy Bitcoin</option>
+                            <option value="sell-bitcoin">Sell Bitcoin</option>
+                            <option value="redeem-giftcard">Redeem Giftcard</option>
+                            <option value="crypto-trading">Cryptocurrency Trading</option>
+                            <option value="interior-design">Interior Design</option>
+                            <option value="renewable-energy">Renewable Energy</option>
+                            <option value="smart-home">Smart Home Automation</option>
+                            <option value="catering">Catering Service</option>
+                            <option value="flight-booking">Flight Booking</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" rows="4" placeholder="Enter your message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Submit Inquiry</button>
+                </form>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="contact-info" data-aos="fade-up" data-aos-delay="300">
+                <div class="contact-info-item">
+                    <i class="fas fa-phone"></i>
+                    <p><a href="tel:+2348089887756">+234 808 988 7756</a></p>
+                </div>
+                <div class="contact-info-item">
+                    <i class="fas fa-envelope"></i>
+                    <p><a href="mailto:trilogyrentals@gmail.com">trilogyrentals@gmail.com</a></p>
+                </div>
+                <div class="contact-info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Admiralty Way, Lekki Phase 1, Lagos</p>
+                </div>
+            </div>
+
+            <!-- Map Section -->
+            <div class="map-section" data-aos="fade-up" data-aos-delay="400">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.927727471639!2d3.506418715336678!3d6.431927695356108!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8d4f3f9f9f9f%3A0x1234567890abcdef!2sAdmiralty%20Way%2C%20Lekki%20Phase%201%2C%20Lagos!5e0!3m2!1sen!2sng!4v1623456789!5m2!1sen!2sng" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer class="footer">
+        <div class="footer-bg"></div>
+        <div class="container footer-content">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-section">
+                        <h4>About Trilogy Homes</h4>
+                        <p>Trilogy Homes offers luxury living and innovative services in Lagos, Nigeria, with a commitment to excellence.</p>
+                        <div class="social-links">
+                            <a href="https://facebook.com" class="social-link" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://twitter.com" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="https://instagram.com" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-section">
+                        <h4>Quick Links</h4>
+                        <ul class="footer-links">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-section">
+                        <h4>Services</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">Luxury Apartments</a></li>
+                            <li><a href="#">Cryptocurrency Trading</a></li>
+                            <li><a href="#">Flight Booking</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-section">
+                        <h4>Contact Info</h4>
+                        <ul class="footer-links">
+                            <li><a href="tel:+2348089887756">+234 808 988 7756</a></li>
+                            <li><a href="mailto:trilogyrentals@gmail.com">trilogyrentals@gmail.com</a></li>
+                            <li><a href="#">Admiralty Way, Lekki Phase 1, Lagos</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Trilogy Homes. All rights reserved. | Updated: 08:17 AM WAT, Wednesday, June 18, 2025 | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <a href="#home" class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" defer></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Dynamically load AOS
+            const aosScript = document.createElement('script');
+            aosScript.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
+            aosScript.integrity = 'sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3';
+            aosScript.crossOrigin = 'anonymous';
+            aosScript.defer = true;
+            document.head.appendChild(aosScript);
+
+            aosScript.onload = () => {
+                if (typeof AOS !== 'undefined') {
+                    AOS.init({ duration: 800, once: true, offset: 100 });
+                } else {
+                    console.warn('AOS failed to load');
+                }
+            };
+
+            aosScript.onerror = () => {
+                console.error('Failed to load AOS script');
+            };
+
+            // Loading Screen
+            const loadingScreen = document.getElementById('loadingScreen');
+            if (loadingScreen) {
+                window.addEventListener('load', () => {
+                    setTimeout(() => {
+                        loadingScreen.style.opacity = '0';
+                        setTimeout(() => loadingScreen.style.display = 'none', 300);
+                    }, 1000);
+                });
+            }
+
+            // Navbar Scroll Effect
+            const navbar = document.getElementById('navbar');
+            if (navbar) {
+                window.addEventListener('scroll', () => {
+                    navbar.classList.toggle('scrolled', window.scrollY > 50);
+                });
+            }
+
+            // Smooth Scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = document.querySelector(anchor.getAttribute('href'));
+                    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+
+            // Scroll to Top
+            const scrollTopBtn = document.getElementById('scrollTop');
+            if (scrollTopBtn) {
+                window.addEventListener('scroll', () => {
+                    scrollTopBtn.classList.toggle('visible', window.scrollY > 200);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

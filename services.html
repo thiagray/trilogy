@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trilogy Homes - Services</title>
+    
+    <!-- Meta Tags for SEO -->
+    <meta name="description" content="Discover the comprehensive services at Trilogy Homes, including luxury apartments, car rentals, cryptocurrency trading, interior design, and more in Lagos, Nigeria.">
+    <meta name="keywords" content="Trilogy Homes services, luxury apartments, car rentals, cryptocurrency trading, interior design, renewable energy, smart home automation, catering, flight booking">
+    <meta name="author" content="Trilogy Homes">
+    <meta property="og:title" content="Trilogy Homes - Services">
+    <meta property="og:description" content="Explore our wide range of premium services from luxury living to innovative solutions at Trilogy Homes.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:url" content="https://trilogyhomes.com/services.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2d5a87;
+            --accent-color: #ffd700;
+            --accent-hover: #ffed4e;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --white: #ffffff;
+            --light-bg: #f7fafc;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.07);
+            --border-radius: 20px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.3s ease;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .navbar {
+            background: rgba(26, 54, 93, 0.95);
+            padding: 0.8rem 0;
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .navbar.scrolled {
+            background: rgba(26, 54, 93, 0.98);
+            padding: 0.4rem 0;
+            box-shadow: var(--shadow-light);
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.6rem;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-accent);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: var(--transition);
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            margin: 0 8px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .hero {
+            height: 60vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center/cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.7), rgba(45, 90, 135, 0.5));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            max-width: 700px;
+            padding: 0 15px;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .btn-primary-custom {
+            background: var(--gradient-accent);
+            color: var(--primary-color);
+            border: none;
+            padding: 10px 20px;
+            font-weight: 600;
+            border-radius: 20px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+        }
+
+        .btn-primary-custom:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .services-section {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            padding: 20px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .service-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #1a365d 0%, #2d5a87 100%);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>') repeat;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-section h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 40px;
+            padding-top: 20px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: 50vh;
+            }
+            .hero-title {
+                font-size: clamp(1.8rem, 5vw, 2.8rem);
+            }
+            .hero-subtitle {
+                font-size: clamp(0.9rem, 2vw, 1.2rem);
+            }
+            .services-section {
+                padding: 60px 0;
+            }
+            .service-card {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Enhanced Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <div class="brand-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                Trilogy Homes
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fas fa-bars text-white"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="clientbooking.html">Book Now</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Enhanced Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content" data-aos="fade-up">
+            <h1 class="hero-title">Our Services</h1>
+            <p class="hero-subtitle">Tailored Solutions for a Modern Lifestyle</p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn-primary-custom">Explore Services</a>
+                <a href="contact.html" class="btn-outline-custom">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">What We Offer</h2>
+            <p class="section-subtitle text-center" data-aos="fade-up" data-aos-delay="100">A wide range of premium services to meet your needs</p>
+            <div class="row g-4 mt-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-home"></i></div>
+                        <h3 class="service-title">Luxury Apartments</h3>
+                        <p class="service-description">Experience premium living with our luxurious apartment rentals in prime locations.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-car"></i></div>
+                        <h3 class="service-title">Premium Car Rentals</h3>
+                        <p class="service-description">Access top-tier vehicles for your travel needs with our premium rental services.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fab fa-bitcoin"></i></div>
+                        <h3 class="service-title">Buy Bitcoin</h3>
+                        <p class="service-description">Securely purchase Bitcoin with our trusted and efficient cryptocurrency service.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fab fa-bitcoin"></i></div>
+                        <h3 class="service-title">Sell Bitcoin</h3>
+                        <p class="service-description">Easily sell your Bitcoin with competitive rates and seamless transactions.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-gift"></i></div>
+                        <h3 class="service-title">Redeem Giftcard</h3>
+                        <p class="service-description">Convert your gift cards into cash or credits with our reliable redemption service.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="700">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                        <h3 class="service-title">Cryptocurrency Trading</h3>
+                        <p class="service-description">Expert guidance and tools for successful cryptocurrency trading.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="800">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+                        <h3 class="service-title">Interior Design</h3>
+                        <p class="service-description">Custom interior solutions to elevate the aesthetics of your living space.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="900">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-leaf"></i></div>
+                        <h3 class="service-title">Renewable Energy</h3>
+                        <p class="service-description">Sustainable energy solutions for eco-friendly living and reduced costs.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="1000">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-home-smart"></i></div>
+                        <h3 class="service-title">Smart Home Automation</h3>
+                        <p class="service-description">Advanced automation systems for a smarter and more comfortable home.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="1100">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-utensils"></i></div>
+                        <h3 class="service-title">Catering Service</h3>
+                        <p class="service-description">Exquisite catering for events and gatherings with personalized menus.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="1200">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-plane"></i></div>
+                        <h3 class="service-title">Flight Booking</h3>
+                        <p class="service-description">Hassle-free flight bookings with competitive rates and excellent support.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer class="footer">
+        <div class="footer-bg"></div>
+        <div class="container footer-content">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-section">
+                        <h4>About Trilogy Homes</h4>
+                        <p>Trilogy Homes delivers luxury living, innovative services, and premium solutions in Lagos, Nigeria, with exceptional quality.</p>
+                        <div class="social-links">
+                            <a href="https://facebook.com" class="social-link" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://twitter.com" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="https://instagram.com" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-section">
+                        <h4>Quick Links</h4>
+                        <ul class="footer-links">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-section">
+                        <h4>Services</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">Luxury Apartments</a></li>
+                            <li><a href="#">Cryptocurrency Trading</a></li>
+                            <li><a href="#">Flight Booking</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-section">
+                        <h4>Contact Info</h4>
+                        <ul class="footer-links">
+                            <li><a href="tel:+2348089887756">+234 808 988 7756</a></li>
+                            <li><a href="mailto:trilogyrentals@gmail.com">trilogyrentals@gmail.com</a></li>
+                            <li><a href="#">Admiralty Way, Lekki Phase 1, Lagos</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Trilogy Homes. All rights reserved. | Updated: 08:11 AM WAT, Wednesday, June 18, 2025 | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <a href="#home" class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" defer></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Dynamically load AOS
+            const aosScript = document.createElement('script');
+            aosScript.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
+            aosScript.integrity = 'sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3';
+            aosScript.crossOrigin = 'anonymous';
+            aosScript.defer = true;
+            document.head.appendChild(aosScript);
+
+            aosScript.onload = () => {
+                if (typeof AOS !== 'undefined') {
+                    AOS.init({ duration: 800, once: true, offset: 100 });
+                } else {
+                    console.warn('AOS failed to load');
+                }
+            };
+
+            aosScript.onerror = () => {
+                console.error('Failed to load AOS script');
+            };
+
+            // Loading Screen
+            const loadingScreen = document.getElementById('loadingScreen');
+            if (loadingScreen) {
+                window.addEventListener('load', () => {
+                    setTimeout(() => {
+                        loadingScreen.style.opacity = '0';
+                        setTimeout(() => loadingScreen.style.display = 'none', 300);
+                    }, 1000);
+                });
+            }
+
+            // Navbar Scroll Effect
+            const navbar = document.getElementById('navbar');
+            if (navbar) {
+                window.addEventListener('scroll', () => {
+                    navbar.classList.toggle('scrolled', window.scrollY > 50);
+                });
+            }
+
+            // Smooth Scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = document.querySelector(anchor.getAttribute('href'));
+                    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+
+            // Scroll to Top
+            const scrollTopBtn = document.getElementById('scrollTop');
+            if (scrollTopBtn) {
+                window.addEventListener('scroll', () => {
+                    scrollTopBtn.classList.toggle('visible', window.scrollY > 200);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
