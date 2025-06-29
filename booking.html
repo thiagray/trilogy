@@ -240,6 +240,36 @@
             margin-top: 30px;
         }
 
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .sidebar {
@@ -349,7 +379,7 @@
             </div>
         </div>
         
-        <form class="booking-form" id="newBookingForm" action="viewnewbooking.html" method="GET">
+        <form class="booking-form" id="newBookingForm">
             <div class="form-section">
                 <h3>Guest Information</h3>
                 <div class="form-row">
@@ -448,11 +478,11 @@
                         <label for="roomType">Room Type *</label>
                         <select id="roomType" name="roomType" class="form-control" required>
                             <option value="">Select Room Type</option>
-                            <option value="standard">Standard Room</option>
-                            <option value="deluxe">Deluxe Room</option>
-                            <option value="suite">Suite</option>
-                            <option value="executive">Executive Suite</option>
-                            <option value="family">Family Room</option>
+                            <option value="standard">Standard Room ($100/night)</option>
+                            <option value="deluxe">Deluxe Room ($150/night)</option>
+                            <option value="suite">Suite ($200/night)</option>
+                            <option value="executive">Executive Suite ($250/night)</option>
+                            <option value="family">Family Room ($300/night)</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -499,28 +529,36 @@
                         <label for="paymentMethod">Payment Method *</label>
                         <select id="paymentMethod" name="paymentMethod" class="form-control" required>
                             <option value="">Select Payment Method</option>
-                            <option value="creditCard">Credit Card</option>
-                            <option value="debitCard">Debit Card</option>
                             <option value="cash">Cash</option>
                             <option value="bankTransfer">Bank Transfer</option>
                             <option value="paypal">PayPal</option>
+                            <option value="flutterwave">Flutterwave</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="cardNumber">Card Number</label>
-                        <input type="text" id="cardNumber" name="cardNumber" class="form-control" placeholder="XXXX XXXX XXXX XXXX">
-                    </div>
                 </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="expiryDate">Expiry Date</label>
-                        <input type="text" id="expiryDate" name="expiryDate" class="form-control" placeholder="MM/YY">
-                    </div>
-                    <div class="form-group">
-                        <label for="cvv">CVV</label>
-                        <input type="text" id="cvv" name="cvv" class="form-control" placeholder="XXX">
-                    </div>
+                <div id="payment-amount" class="form-group" style="display: none;">
+                    <label>Total Amount:</label>
+                    <span id="total-amount" class="form-control" style="border: none; background: transparent;">$0.00</span>
+                </div>
+                <div id="cash-verified" style="display: none;">
+                    <button type="button" id="verify-cash" class="btn btn-success">
+                        <i class="fas fa-check"></i> Verify Cash Payment
+                    </button>
+                </div>
+                <div id="bank-transfer-details" style="display: none;">
+                    <button type="button" id="show-bank-details" class="btn btn-primary">
+                        <i class="fas fa-bank"></i> View Bank Details
+                    </button>
+                </div>
+                <div id="paypal-payment" style="display: none;">
+                    <button type="button" id="pay-with-paypal" class="btn btn-success">
+                        <i class="fab fa-paypal"></i> Pay with PayPal
+                    </button>
+                </div>
+                <div id="flutterwave-payment" style="display: none;">
+                    <button type="button" id="pay-with-flutterwave" class="btn btn-success">
+                        <i class="fas fa-credit-card"></i> Pay with Flutterwave
+                    </button>
                 </div>
             </div>
             
@@ -538,37 +576,228 @@
                 <button type="reset" class="btn btn-danger">
                     <i class="fas fa-times"></i> Clear Form
                 </button>
-                <button type="submit" class="btn btn-success">
+                <button type="submit" id="save-booking" class="btn btn-success" disabled>
                     <i class="fas fa-save"></i> Save Booking
                 </button>
             </div>
         </form>
+        <footer class="text-center text-gray-600 mt-4">
+            <p>© 2025 Trilogy_Homes | Updated: 05:45 PM WAT, Monday, June 23, 2025</p>
+        </footer>
+
+        <!-- Bank Transfer Modal -->
+        <div id="bank-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="document.getElementById('bank-modal').style.display='none'">×</span>
+                <h3 class="text-center mb-4">Bank Transfer Details</h3>
+                <p>Account Number: 1810584746</p>
+                <p>Bank Name: Access Bank</p>
+                <p>Account Name: Temile Victor </p>
+                <div class="form-group mt-4">
+                    <label for="receipt-upload">Upload Receipt (PNG/JPG)</label>
+                    <input type="file" id="receipt-upload" name="receipt-upload" class="form-control" accept=".png,.jpg,.jpeg" multiple>
+                </div>
+                <button type="button" id="submit-receipt" class="btn btn-success mt-4">
+                    <i class="fas fa-upload"></i> Submit Receipt
+                </button>
+            </div>
+        </div>
     </div>
 
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script> <!-- Test client ID -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // For the first demo, just submit the form to the view-booking page
             const bookingForm = document.getElementById('newBookingForm');
-            
+            const paymentMethod = document.getElementById('paymentMethod');
+            const cashVerified = document.getElementById('cash-verified');
+            const bankTransferDetails = document.getElementById('bank-transfer-details');
+            const paypalPayment = document.getElementById('paypal-payment');
+            const flutterwavePayment = document.getElementById('flutterwave-payment');
+            const saveBookingBtn = document.getElementById('save-booking');
+            const totalAmountDisplay = document.getElementById('total-amount');
+            const paymentAmountDiv = document.getElementById('payment-amount');
+            const checkInDate = document.getElementById('checkInDate');
+            const checkOutDate = document.getElementById('checkOutDate');
+            const roomType = document.getElementById('roomType');
+            const adults = document.getElementById('adults');
+            const children = document.getElementById('children');
+            const verifyCashBtn = document.getElementById('verify-cash');
+            const showBankDetailsBtn = document.getElementById('show-bank-details');
+            const bankModal = document.getElementById('bank-modal');
+            const submitReceiptBtn = document.getElementById('submit-receipt');
+            const payWithPaypal = document.getElementById('pay-with-paypal');
+            const payWithFlutterwave = document.getElementById('pay-with-flutterwave');
+
+            // Calculate total amount based on room type, dates, and number of guests
+            function calculateTotalAmount() {
+                const roomRates = {
+                    standard: 100,
+                    deluxe: 150,
+                    suite: 200,
+                    executive: 250,
+                    family: 300
+                };
+                const roomRate = roomRates[roomType.value] || 0;
+                const checkIn = new Date(checkInDate.value);
+                const checkOut = new Date(checkOutDate.value);
+                const nights = (checkOut - checkIn) / (1000 * 60 * 60 * 24);
+                const adultCount = parseInt(adults.value) || 1;
+                const childCount = parseInt(children.value) || 0;
+                const total = roomRate * nights * (adultCount + childCount * 0.5); // Children at 50% rate
+                totalAmountDisplay.textContent = `$${total.toFixed(2)}`;
+                return total > 0 ? total : 0;
+            }
+
+            [checkInDate, checkOutDate, roomType, adults, children].forEach(element => {
+                element.addEventListener('change', () => {
+                    const total = calculateTotalAmount();
+                    paymentAmountDiv.style.display = total > 0 ? 'block' : 'none';
+                    saveBookingBtn.disabled = total <= 0 || !paymentMethod.value || 
+                        (paymentMethod.value === 'cash' && !verifyCashBtn.dataset.verified) ||
+                        (paymentMethod.value === 'bankTransfer' && !submitReceiptBtn.dataset.verified);
+                });
+            });
+
+            paymentMethod.addEventListener('change', function() {
+                const method = this.value;
+                cashVerified.style.display = method === 'cash' ? 'block' : 'none';
+                bankTransferDetails.style.display = method === 'bankTransfer' ? 'block' : 'none';
+                paypalPayment.style.display = method === 'paypal' ? 'block' : 'none';
+                flutterwavePayment.style.display = method === 'flutterwave' ? 'block' : 'none';
+                paymentAmountDiv.style.display = ['paypal', 'flutterwave'].includes(method) && calculateTotalAmount() > 0 ? 'block' : 'none';
+                saveBookingBtn.disabled = !method || (method === 'cash' && !verifyCashBtn.dataset.verified) ||
+                    (method === 'bankTransfer' && !submitReceiptBtn.dataset.verified) ||
+                    (['paypal', 'flutterwave'].includes(method) && calculateTotalAmount() <= 0);
+            });
+
+            // Cash Verification
+            verifyCashBtn.addEventListener('click', function() {
+                if (!this.dataset.verified) {
+                    this.dataset.verified = 'true';
+                    this.textContent = 'Verified';
+                    this.classList.add('btn-success');
+                    saveBookingBtn.disabled = false;
+                }
+            });
+
+            // Bank Transfer Modal
+            showBankDetailsBtn.addEventListener('click', function() {
+                bankModal.style.display = 'block';
+            });
+
+            submitReceiptBtn.addEventListener('click', function() {
+                const receiptUpload = document.getElementById('receipt-upload');
+                if (receiptUpload.files.length > 0) {
+                    this.dataset.verified = 'true';
+                    this.textContent = 'Verified';
+                    this.classList.add('btn-success');
+                    bankModal.style.display = 'none';
+                    saveBookingBtn.disabled = false;
+                } else {
+                    alert('Please upload a receipt image (PNG/JPG).');
+                }
+            });
+
+            // PayPal Payment (Simulated)
+            payWithPaypal.addEventListener('click', function() {
+                const totalAmount = calculateTotalAmount();
+                if (totalAmount <= 0) {
+                    alert('Please fill in booking details to calculate the amount.');
+                    return;
+                }
+                if (window.paypal) {
+                    paypal.Buttons({
+                        createOrder: function(data, actions) {
+                            return actions.order.create({
+                                purchase_units: [{
+                                    amount: {
+                                        value: totalAmount.toFixed(2),
+                                        currency_code: 'USD'
+                                    }
+                                }]
+                            });
+                        },
+                        onApprove: function(data, actions) {
+                            return actions.order.capture().then(function(details) {
+                                alert('PayPal payment successful! Booking will be saved.');
+                                saveBookingBtn.disabled = false;
+                                bookingForm.submit();
+                            });
+                        },
+                        onError: function(err) {
+                            alert('PayPal payment failed. Please try again.');
+                        }
+                    }).render('#paypal-payment');
+                } else {
+                    alert('PayPal SDK not loaded. Please check your internet connection.');
+                }
+            });
+
+            // Flutterwave Payment
+            payWithFlutterwave.addEventListener('click', function() {
+                const totalAmount = calculateTotalAmount();
+                if (totalAmount <= 0) {
+                    alert('Please fill in booking details to calculate the amount.');
+                    return;
+                }
+
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const firstName = document.getElementById('firstName').value;
+                const lastName = document.getElementById('lastName').value;
+
+                FlutterwaveCheckout({
+                    public_key: 'FLWPUBK_TEST-6e1e6b8f0a8b4c6d9e2f3a5b7c8d9e0f1g2h3i4j5k6l7m8n9o0p', // Replace with your live key
+                    tx_ref: 'tx_' + Date.now(),
+                    amount: totalAmount,
+                    currency: 'USD',
+                    payment_options: 'card, bank transfer, ussd, mobile money',
+                    customer: {
+                        email: email,
+                        phone_number: phone,
+                        name: `${firstName} ${lastName}`,
+                    },
+                    callback: function (payment) {
+                        if (payment.status === 'successful') {
+                            alert('Flutterwave payment successful! Booking will be saved.');
+                            saveBookingBtn.disabled = false;
+                            bookingForm.submit();
+                        } else {
+                            alert('Flutterwave payment failed. Please try again.');
+                        }
+                    },
+                    customizations: {
+                        title: 'Trilogy_Homes Booking Payment',
+                        description: 'Payment for room booking',
+                        logo: 'https://your-logo-url.com/logo.png', // Replace with your logo URL
+                    },
+                });
+            });
+
             bookingForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                
-                // In a real application, you would validate the form and save the data
-                // For demonstration, we'll just redirect to the view-booking page
-                window.location.href = 'view-booking.html';
+                const method = paymentMethod.value;
+                if (method === 'paypal') {
+                    payWithPaypal.click();
+                } else if (method === 'flutterwave') {
+                    payWithFlutterwave.click();
+                } else if (method && calculateTotalAmount() > 0 && 
+                          ((method === 'cash' && verifyCashBtn.dataset.verified) || 
+                           (method === 'bankTransfer' && submitReceiptBtn.dataset.verified))) {
+                    window.location.href = 'viewnewbooking.html';
+                } else {
+                    alert('Please complete the payment process or fill in booking details.');
+                }
             });
-            
+
             // Room type changes available room numbers
             const roomTypeSelect = document.getElementById('roomType');
             const roomNumberSelect = document.getElementById('roomNumber');
             
             roomTypeSelect.addEventListener('change', function() {
                 const selectedType = this.value;
-                
-                // Clear current options
                 roomNumberSelect.innerHTML = '<option value="">Select Room Number</option>';
-                
-                // Add room numbers based on type
                 if (selectedType === 'standard') {
                     roomNumberSelect.innerHTML += `
                         <option value="101">101 - Standard (Available)</option>
@@ -597,6 +826,7 @@
                         <option value="502">502 - Family Room (Available)</option>
                     `;
                 }
+                calculateTotalAmount();
             });
         });
     </script>
