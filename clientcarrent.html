@@ -140,6 +140,15 @@
             font-weight: 600;
         }
 
+        .navbar-toggler {
+            border: none;
+            outline: none;
+        }
+
+        .navbar-collapse {
+            transition: all 0.3s ease;
+        }
+
         .hero {
             height: 60vh;
             position: relative;
@@ -435,7 +444,7 @@
             padding: 20px;
             border-radius: var(--border-radius);
             width: 90%;
-            max-width: 400px;
+            max-width: 500px;
             position: relative;
         }
 
@@ -486,7 +495,7 @@
                 Trilogy Homes
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <i class="fas fa-bars text-white"></i>
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
@@ -502,14 +511,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="gallary.html">Gallery</a>
                     </li>
-                   <!-- <li class="nav-item">
-                        <a class="nav-link" href="#testimonials">Reviews</a>
-                    </li>-->
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="clientbooking.html">Apartment Booking </a>
+                        <a class="nav-link" href="clientbooking.html">Apartment Booking</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="clientcarrent.html">Car Booking</a>
@@ -528,8 +534,8 @@
     <section class="hero" id="home">
         <div class="hero-overlay"></div>
         <div class="hero-content" data-aos="fade-up">
-            <h1 class="hero-title">Book Your Stay</h1>
-            <p class="hero-subtitle">Secure your booking with ease</p>
+            <h1 class="hero-title">Book Your Stay or Service</h1>
+            <p class="hero-subtitle">Secure your apartment or car rental with ease</p>
             <div class="hero-buttons">
                 <a href="#booking" class="btn-primary-custom">Start Booking</a>
             </div>
@@ -539,88 +545,22 @@
     <!-- Booking Section -->
     <section class="booking-section" id="booking">
         <div class="container">
-            <h2 class="section-title text-center" data-aos="fade-up">Book Your Experience</h2>
-            <p class="section-subtitle text-center" data-aos="fade-up" data-aos-delay="100">Fill out the form below to reserve your stay or service</p>
+            <h2 class="section-title text-center" data-aos="fade-up">Book Your Service</h2>
+            <p class="section-subtitle text-center" data-aos="fade-up" data-aos-delay="100">Fill out the form below to reserve your car or apartment</p>
 
             <!-- Booking Form -->
             <div class="booking-form" data-aos="fade-up" data-aos-delay="200">
-                <form class="booking-form" id="newBookingForm">
+                <form class="booking-form" id="serviceBookingForm">
                     <div class="form-section">
                         <h3>Guest Information</h3>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="firstName">First Name *</label>
-                                <input type="text" id="firstName" name="firstName" class="form-control" required>
+                                <label for="customerName">Customer Name *</label>
+                                <input type="text" id="customerName" name="customerName" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="lastName">Last Name *</label>
-                                <input type="text" id="lastName" name="lastName" class="form-control" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="email">Email Address *</label>
-                                <input type="email" id="email" name="email" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Phone Number *</label>
-                                <input type="tel" id="phone" name="phone" class="form-control" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="address">Address</label>
-                                <input type="text" id="address" name="address" class="form-control">
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="city">City</label>
-                                <input type="text" id="city" name="city" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="state">State/Province</label>
-                                <input type="text" id="state" name="state" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="zipCode">Zip/Postal Code</label>
-                                <input type="text" id="zipCode" name="zipCode" class="form-control">
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="country">State</label>
-                                <select id="country" name="country" class="form-control">
-                                    <option value="">Select State</option>
-                                    <option value="USA">Lagos</option>
-                                    <option value="UK">Delta</option>
-                                    <option value="CA">Edo</option>
-                                    <option value="AU">Rivers </option>
-                                    <option value="FR">Oyo</option>
-                                    <option value="DE">Anambra</option>
-                                    <option value="JP">osun</option>
-                                    <option value="CN">Abuja</option>
-                                    <option value="IN">Calaba</option>
-                                    <option value="BR">Imo</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="idType">ID Type</label>
-                                <select id="idType" name="idType" class="form-control">
-                                    <option value="">Select ID Type</option>
-                                    <option value="passport">Passport</option>
-                                    <option value="driverLicense">Driver's License</option>
-                                    <option value="nationalId">National ID</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="idNumber">ID Number</label>
-                                <input type="text" id="idNumber" name="idNumber" class="form-control">
+                                <label for="contactNumber">Contact Number *</label>
+                                <input type="tel" id="contactNumber" name="contactNumber" class="form-control" pattern="[0-9]{10}" required>
                             </div>
                         </div>
                     </div>
@@ -629,60 +569,117 @@
                         <h3>Booking Details</h3>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="checkInDate">Check-in Date *</label>
-                                <input type="date" id="checkInDate" name="checkInDate" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="checkOutDate">Check-out Date *</label>
-                                <input type="date" id="checkOutDate" name="checkOutDate" class="form-control" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="roomType">Room Type *</label>
-                                <select id="roomType" name="roomType" class="form-control" required>
-                                    <option value="">Select Room Type</option>
-                                    <option value="standard">Standard Room ($100/night)</option>
-                                    <option value="deluxe">Deluxe Room ($150/night)</option>
-                                    <option value="suite">Suite ($200/night)</option>
-                                    <option value="executive">Executive Suite ($250/night)</option>
-                                    <option value="family">Family Room ($300/night)</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="roomNumber">Room Number *</label>
-                                <select id="roomNumber" name="roomNumber" class="form-control" required>
-                                    <option value="">Select Room Number</option>
-                                    <option value="101">101 - Standard (Available)</option>
-                                    <option value="103">103 - Standard (Available)</option>
-                                    <option value="202">202 - Deluxe (Available)</option>
-                                    <option value="204">204 - Deluxe (Available)</option>
-                                    <option value="301">301 - Suite (Available)</option>
-                                    <option value="303">303 - Family (Available)</option>
+                                <label for="serviceType">Select Service *</label>
+                                <select id="serviceType" name="serviceType" class="form-control" required>
+                                    <option value="">Select Service</option>
+                                    <option value="car">Car Rental</option>
+                                    <option value="apartment">Apartment Booking</option>
                                 </select>
                             </div>
                         </div>
-                        
+                        <!-- Car Rental Details -->
+                        <div id="carDetails" class="form-section" style="display: none;">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="carType">Select Car *</label>
+                                    <select id="carType" name="carType" class="form-control" required>
+                                        <option value="">Select Car</option>
+                                        <option value="sedan">Toyota Camry </option>
+                                        <option value="suv">Prado SUV </option>
+                                        <option value="luxury">Roll-Royce </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="startTime">Start Time *</label>
+                                    <input type="time" id="startTime" name="startTime" class="form-control" min="07:00" max="23:00" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="endTime">End Time *</label>
+                                    <input type="time" id="endTime" name="endTime" class="form-control" min="07:00" max="23:00" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="bookingDate">Booking Date *</label>
+                                    <input type="date" id="bookingDate" name="bookingDate" class="form-control" value="2025-07-13" required>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Apartment Booking Details (Placeholder) -->
+                        <div id="apartmentDetails" class="form-section" style="display: none;">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="apartmentType">Select Apartment *</label>
+                                    <select id="apartmentType" name="apartmentType" class="form-control" required>
+                                        <option value="">Select Apartment</option>
+                                        <option value="standard">Standard Apartment (₦110,000/day)</option>
+                                        <option value="luxury">Luxury Apartment (₦150,000/day)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="checkInDate">Check-in Date *</label>
+                                    <input type="date" id="checkInDate" name="checkInDate" class="form-control" value="2025-07-13" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="checkOutDate">Check-out Date *</label>
+                                    <input type="date" id="checkOutDate" name="checkOutDate" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="guests">Number of Guests *</label>
+                                    <input type="number" id="guests" name="guests" class="form-control" min="1" max="10" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section" id="servicesSection" style="display: none;">
+                        <h3>Services (Car Rental Only)</h3>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="adults">Number of Adults *</label>
-                                <select id="adults" name="adults" class="form-control" required>
-                                    <option value="1">1</option>
-                                    <option value="2" selected>2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                </select>
+                                <label class="form-label">Additional Services</label>
+                                <div class="space-y-2">
+                                    <label class="flex items-center">
+                                        <input type="checkbox" id="nightPickup" class="mr-2" value="75000">
+                                        <span>Night Pickup & Hotel Drop-off (₦90,000)</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" id="prado12Service" class="mr-2" value="130000">
+                                        <span>12 Hours Prado Transport Service (₦150,000)</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" id="prado8Service" class="mr-2" value="110000">
+                                        <span>8 Hours Prado Transport Service (₦130,000)</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" id="prado6Service" class="mr-2" value="100000">
+                                        <span>6 Hours Prado Transport Service (₦110,000)</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" id="prado3Service" class="mr-2" value="90000">
+                                        <span>3 Hours Prado Transport Service (₦95,000)</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" id="airportService" class="mr-2" value="75000">
+                                        <span>Airport Drop up and Pickup (₦90,000)</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" id="policeEscort" class="mr-2" value="30000">
+                                        <span>Police Escort (₦30,000)</span>
+                                    </label>
+                                </div>
+                                <div class="mt-4">
+                                    <label class="form-label">Total Price</label>
+                                    <input type="text" id="totalPriceDisplay" class="form-control bg-gray-100" readonly>
+                                    <button type="button" id="generateTotal" class="btn-success mt-2">Generate Total</button>
+                                </div>
                             </div>
+                        </div>
+                        <div class="form-row">
                             <div class="form-group">
-                                <label for="children">Number of Children</label>
-                                <select id="children" name="children" class="form-control">
-                                    <option value="0" selected>0</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                </select>
+                                <label for="customTrip">Custom Trip Description</label>
+                                <textarea id="customTrip" name="customTrip" class="form-control" placeholder="Describe your custom trip here..."></textarea>
                             </div>
                         </div>
                     </div>
@@ -695,64 +692,20 @@
                                 <select id="paymentMethod" name="paymentMethod" class="form-control" required>
                                     <option value="">Select Payment Method</option>
                                     <option value="cash">Cash</option>
-                                    <option value="bankTransfer">Bank Transfer</option>
-                                    <option value="paypal">PayPal</option>
-                                    <option value="flutterwave">Flutterwave</option>
+                                    <option value="transfer">Transfer</option>
+                                    <option value="pos">POS</option>
                                 </select>
-                            </div>
-                        </div>
-                        <div id="payment-amount" class="form-group" style="display: none;">
-                            <label>Total Amount:</label>
-                            <span id="total-amount" class="form-control" style="border: none; background: transparent;">$0.00</span>
-                        </div>
-                        <div id="cash-verified" style="display: none;">
-                            <button type="button" id="verify-cash" class="btn btn-success">
-                                <i class="fas fa-check"></i> Verify Cash Payment
-                            </button>
-                        </div>
-                        <div id="bank-transfer-details" style="display: none;">
-                            <button type="button" id="show-bank-details" class="btn btn-primary-custom">
-                                <i class="fas fa-bank"></i> View Bank Details
-                            </button>
-                        </div>
-                        <div id="paypal-payment" style="display: none;">
-                            <button type="button" id="pay-with-paypal" class="btn btn-success">
-                                <i class="fab fa-paypal"></i> Pay with PayPal
-                            </button>
-                        </div>
-                        <div id="flutterwave-payment" style="display: none;">
-                            <button type="button" id="pay-with-flutterwave" class="btn btn-success">
-                                <i class="fas fa-credit-card"></i> Pay with Flutterwave
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="form-section">
-                        <h3>Additional Information</h3>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="specialRequests">Special Requests</label>
-                                <textarea id="specialRequests" name="specialRequests" class="form-control" placeholder="Please enter any special requirements or requests..."></textarea>
                             </div>
                         </div>
                     </div>
                     
                     <div class="form-actions">
-                        <button type="reset" class="btn btn-danger">
+                        <button type="reset" id="clearFormBtn" class="btn-danger">
                             <i class="fas fa-times"></i> Clear Form
                         </button>
-                        <button type="submit" id="save-booking" class="btn btn-success" disabled>
-                            <i class="fas fa-save"></i> Save Booking
+                        <button type="submit" id="bookServiceBtn" class="btn-success" disabled>
+                            <i class="fas fa-save"></i> Book Service
                         </button>
-                        <!-- Font Awesome CDN (Add in your <head> section once) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-<!-- Button with green background and car icon -->
-<a href="clientcarrent.html" class="btn" style="background-color: green; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
-    <i class="fas fa-car"></i> Book A Car
-</a>
-
-                          
                     </div>
                 </form>
             </div>
@@ -809,7 +762,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2025 Trilogy Homes. All rights reserved. | Updated: 05:54 PM WAT, Monday, June 23, 2025 | Privacy Policy | Terms of Service</p>
+                <p>© 2025 Trilogy Homes. All rights reserved. | Updated: 07:04 AM WAT, Sunday, July 13, 2025 | Privacy Policy | Terms of Service</p>
             </div>
         </div>
     </footer>
@@ -822,35 +775,39 @@
         <div class="modal-content">
             <span class="close" onclick="document.getElementById('bank-modal').style.display='none'">×</span>
             <h3 class="text-center mb-4">Bank Transfer Details</h3>
-            
-                <p style="color: green;font-style: italic;">Bank Name: Providus Bank</p>
-                <p>Account Number: 1305567850</p>
-                <p>Account Name: Trilogy Homes limited </p>
-
-
-               
-                <p style="color: green;font-style: italic;">Bank Name: Kuda Bank</p>
-                <p>Account Number: 3002593563 </p>
-                <p>Account Name: Trilogy Homes Limited </p>
-
-               
-                <p style="color: green;font-style: italic;">Bank Name: Fidelity Bank</p>
-                <p>Account Number: 5601112720</p>
-                <p>Account Name: Trilogy Homes Limited </p>
+            <p style="color: green;font-style: italic;">Bank Name: Providus Bank</p>
+            <p>Account Number: 1305567850</p>
+            <p>Account Name: Trilogy Homes limited</p>
+            <p style="color: green;font-style: italic;">Bank Name: Kuda Bank</p>
+            <p>Account Number: 3002593563</p>
+            <p>Account Name: Trilogy Homes Limited</p>
+            <p style="color: green;font-style: italic;">Bank Name: Fidelity Bank</p>
+            <p>Account Number: 5601112720</p>
+            <p>Account Name: Trilogy Homes Limited</p>
             <div class="form-group mt-4">
                 <label for="receipt-upload">Upload Receipt (PNG/JPG)</label>
                 <input type="file" id="receipt-upload" name="receipt-upload" class="form-control" accept=".png,.jpg,.jpeg" multiple>
             </div>
-            <button type="button" id="submit-receipt" class="btn btn-success mt-4">
+            <button type="button" id="submit-receipt" class="btn-success mt-4">
                 <i class="fas fa-upload"></i> Submit Receipt
             </button>
         </div>
     </div>
 
+    <!-- Apartment Booking Modal -->
+    <div id="apartment-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="document.getElementById('apartment-modal').style.display='none'">×</span>
+            <h3 class="text-center mb-4">Apartment Booking Details</h3>
+            <p>Additional details for apartment booking will be added here.</p>
+            <button type="button" class="btn-success mt-4" onclick="document.getElementById('apartment-modal').style.display='none'">Close</button>
+        </div>
+    </div>
+
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"></script>
     <script src="https://checkout.flutterwave.com/v3.js"></script>
-    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=test¤cy=USD"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Dynamically load AOS
@@ -909,226 +866,204 @@
                 });
             }
 
-            // Payment Logic
-            const bookingForm = document.getElementById('newBookingForm');
+            // Car Rental and Apartment Booking Logic
+            let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+            const serviceBookingForm = document.getElementById('serviceBookingForm');
+            const totalPriceDisplay = document.getElementById('totalPriceDisplay');
+            const generateTotalBtn = document.getElementById('generateTotal');
+            const bookServiceBtn = document.getElementById('bookServiceBtn');
             const paymentMethod = document.getElementById('paymentMethod');
-            const cashVerified = document.getElementById('cash-verified');
-            const bankTransferDetails = document.getElementById('bank-transfer-details');
-            const paypalPayment = document.getElementById('paypal-payment');
-            const flutterwavePayment = document.getElementById('flutterwave-payment');
-            const saveBookingBtn = document.getElementById('save-booking');
-            const totalAmountDisplay = document.getElementById('total-amount');
-            const paymentAmountDiv = document.getElementById('payment-amount');
-            const checkInDate = document.getElementById('checkInDate');
-            const checkOutDate = document.getElementById('checkOutDate');
-            const roomType = document.getElementById('roomType');
-            const adults = document.getElementById('adults');
-            const children = document.getElementById('children');
-            const verifyCashBtn = document.getElementById('verify-cash');
-            const showBankDetailsBtn = document.getElementById('show-bank-details');
+            const serviceType = document.getElementById('serviceType');
+            const carDetails = document.getElementById('carDetails');
+            const apartmentDetails = document.getElementById('apartmentDetails');
+            const servicesSection = document.getElementById('servicesSection');
             const bankModal = document.getElementById('bank-modal');
             const submitReceiptBtn = document.getElementById('submit-receipt');
-            const payWithPaypal = document.getElementById('pay-with-paypal');
-            const payWithFlutterwave = document.getElementById('pay-with-flutterwave');
+            const clearFormBtn = document.getElementById('clearFormBtn');
+            const apartmentModal = document.getElementById('apartment-modal');
+            const currentDate = new Date('2025-07-13T07:04:00+01:00'); // Updated to current time
+            const currentHour = currentDate.getHours();
 
-            // Calculate total amount based on room type, dates, and number of guests
-            function calculateTotalAmount() {
-                const roomRates = {
-                    standard: 100,
-                    deluxe: 150,
-                    suite: 200,
-                    executive: 250,
-                    family: 300
-                };
-                const roomRate = roomRates[roomType.value] || 0;
-                const checkIn = new Date(checkInDate.value);
-                const checkOut = new Date(checkOutDate.value);
-                const nights = (checkOut - checkIn) / (1000 * 60 * 60 * 24);
-                const adultCount = parseInt(adults.value) || 1;
-                const childCount = parseInt(children.value) || 0;
-                const total = roomRate * nights * (adultCount + childCount * 0.5); // Children at 50% rate
-                totalAmountDisplay.textContent = `$${total.toFixed(2)}`;
-                return total > 0 ? total : 0;
+            const carRates = {
+                sedan: 5000,
+                suv: 7500,
+                luxury: 12000
+            };
+
+            function calculateServiceTotal(services) {
+                return services.reduce((sum, service) => sum + parseInt(service), 0);
             }
 
-            [checkInDate, checkOutDate, roomType, adults, children].forEach(element => {
-                element.addEventListener('change', () => {
-                    const total = calculateTotalAmount();
-                    paymentAmountDiv.style.display = total > 0 ? 'block' : 'none';
-                    saveBookingBtn.disabled = total <= 0 || !paymentMethod.value || 
-                        (paymentMethod.value === 'cash' && !verifyCashBtn.dataset.verified) ||
-                        (paymentMethod.value === 'bankTransfer' && !submitReceiptBtn.dataset.verified);
-                });
+            function calculateTotalPrice(startTime, endTime, carType, services) {
+                const start = parseInt(startTime.split(':')[0]);
+                const end = parseInt(endTime.split(':')[0]);
+                const hours = (end - start + 24) % 24 || 24;
+                const basePrice = carRates[carType] * hours;
+                const servicePrice = calculateServiceTotal(services);
+                return basePrice + servicePrice;
+            }
+
+            function updateServiceTotal() {
+                const services = [
+                    document.getElementById('nightPickup').checked ? 75000 : 0,
+                    document.getElementById('prado12Service').checked ? 130000 : 0,
+                    document.getElementById('prado8Service').checked ? 110000 : 0,
+                    document.getElementById('prado6Service').checked ? 100000 : 0,
+                    document.getElementById('prado3Service').checked ? 90000 : 0,
+                    document.getElementById('airportService').checked ? 75000 : 0,
+                    document.getElementById('policeEscort').checked ? 30000 : 0
+                ].filter(price => price > 0);
+                const total = calculateServiceTotal(services);
+                totalPriceDisplay.value = `₦${total.toLocaleString()}`;
+            }
+
+            ['nightPickup', 'prado12Service', 'prado8Service', 'prado6Service', 'prado3Service', 'airportService', 'policeEscort'].forEach(id => {
+                document.getElementById(id)?.addEventListener('click', updateServiceTotal);
             });
 
-            paymentMethod.addEventListener('change', function() {
-                const method = this.value;
-                cashVerified.style.display = method === 'cash' ? 'block' : 'none';
-                bankTransferDetails.style.display = method === 'bankTransfer' ? 'block' : 'none';
-                paypalPayment.style.display = method === 'paypal' ? 'block' : 'none';
-                flutterwavePayment.style.display = method === 'flutterwave' ? 'block' : 'none';
-                paymentAmountDiv.style.display = ['paypal', 'flutterwave'].includes(method) && calculateTotalAmount() > 0 ? 'block' : 'none';
-                saveBookingBtn.disabled = !method || (method === 'cash' && !verifyCashBtn.dataset.verified) ||
-                    (method === 'bankTransfer' && !submitReceiptBtn.dataset.verified) ||
-                    (['paypal', 'flutterwave'].includes(method) && calculateTotalAmount() <= 0);
+            generateTotalBtn.addEventListener('click', () => {
+                updateServiceTotal();
             });
 
-            // Cash Verification
-            verifyCashBtn.addEventListener('click', function() {
-                if (!this.dataset.verified) {
-                    this.dataset.verified = 'true';
-                    this.textContent = 'Verified';
-                    this.classList.add('btn-success');
-                    saveBookingBtn.disabled = false;
+            serviceType.addEventListener('change', () => {
+                const selectedService = serviceType.value;
+                carDetails.style.display = selectedService === 'car' ? 'block' : 'none';
+                apartmentDetails.style.display = selectedService === 'apartment' ? 'block' : 'none';
+                servicesSection.style.display = selectedService === 'car' ? 'block' : 'none';
+                bookServiceBtn.disabled = true;
+                totalPriceDisplay.value = '₦0';
+                updateButtonState();
+            });
+
+            function updateButtonState() {
+                const isCar = serviceType.value === 'car' && document.getElementById('carType').value && document.getElementById('startTime').value && document.getElementById('endTime').value && document.getElementById('bookingDate').value;
+                const isApartment = serviceType.value === 'apartment' && document.getElementById('apartmentType').value && document.getElementById('checkInDate').value && document.getElementById('checkOutDate').value && document.getElementById('guests').value;
+                bookServiceBtn.disabled = !(isCar || isApartment) || !paymentMethod.value;
+            }
+
+            [paymentMethod, serviceType, document.getElementById('carType'), document.getElementById('startTime'), document.getElementById('endTime'), document.getElementById('bookingDate'), document.getElementById('apartmentType'), document.getElementById('checkInDate'), document.getElementById('checkOutDate'), document.getElementById('guests')].forEach(element => {
+                element?.addEventListener('change', updateButtonState);
+            });
+
+            serviceBookingForm.addEventListener('submit', (e) => {
+                const customerName = document.getElementById('customerName').value;
+                const contactNumber = document.getElementById('contactNumber').value;
+                const serviceTypeValue = document.getElementById('serviceType').value;
+                const paymentMethodValue = document.getElementById('paymentMethod').value;
+                const customTrip = document.getElementById('customTrip').value.trim() || null;
+
+                if (!customerName || !contactNumber || !serviceTypeValue || !paymentMethodValue) {
+                    e.preventDefault();
+                    alert('Please fill out all required fields.');
+                    return;
+                }
+
+                let bookingDetails = {};
+                if (serviceTypeValue === 'car') {
+                    const carType = document.getElementById('carType').value;
+                    const startTime = document.getElementById('startTime').value;
+                    const endTime = document.getElementById('endTime').value;
+                    const bookingDate = document.getElementById('bookingDate').value;
+                    const services = [
+                        document.getElementById('nightPickup').checked ? 75000 : 0,
+                        document.getElementById('prado12Service').checked ? 130000 : 0,
+                        document.getElementById('prado8Service').checked ? 110000 : 0,
+                        document.getElementById('prado6Service').checked ? 100000 : 0,
+                        document.getElementById('prado3Service').checked ? 90000 : 0,
+                        document.getElementById('airportService').checked ? 75000 : 0,
+                        document.getElementById('policeEscort').checked ? 30000 : 0
+                    ].filter(price => price > 0);
+                    const startHour = parseInt(startTime.split(':')[0]);
+                    const endHour = parseInt(endTime.split(':')[0]);
+                    const isNightBooking = startHour >= 23 || startHour < 6 || (endHour >= 23 && endHour < 6);
+
+                    if (bookingDate === '2025-07-13' && currentHour >= 23 && !isNightBooking) {
+                        e.preventDefault();
+                        alert('Bookings for 7 AM–11 PM are closed. Please select a night booking (11:01 PM–6 AM).');
+                        return;
+                    }
+
+                    if (!isNightBooking && (startHour < 7 || endHour > 23 || startHour > 23 || endHour < 7)) {
+                        e.preventDefault();
+                        alert('Daytime bookings must be between 7 AM and 11 PM.');
+                        return;
+                    }
+
+                    if (isNightBooking && (startHour < 23 || endHour > 6 || startHour >= 7 || endHour <= 23)) {
+                        e.preventDefault();
+                        alert('Night bookings must be between 11:01 PM and 6 AM.');
+                        return;
+                    }
+
+                    const totalPrice = calculateTotalPrice(startTime, endTime, carType, services);
+                    bookingDetails = { customerName, contactNumber, serviceType: 'Car Rental', carType, startTime, endTime, date: bookingDate, services: services.length ? services.map(price => {
+                        if (price === 75000) return 'Night Pickup & Hotel Drop-off';
+                        if (price === 130000) return '12 Hours Prado Transport Service';
+                        if (price === 110000) return '8 Hours Prado Transport Service';
+                        if (price === 100000) return '6 Hours Prado Transport Service';
+                        if (price === 90000) return '3 Hours Prado Transport Service';
+                        if (price === 30000) return 'Police Escort';
+                        return 'Airport Drop up and Pickup';
+                    }) : ['None'], totalPrice, paymentMethod: paymentMethodValue, customTrip };
+                } else if (serviceTypeValue === 'apartment') {
+                    const apartmentType = document.getElementById('apartmentType').value;
+                    const checkInDate = document.getElementById('checkInDate').value;
+                    const checkOutDate = document.getElementById('checkOutDate').value;
+                    const guests = document.getElementById('guests').value;
+                    const apartmentRates = { standard: 110000, luxury: 150000 }; // Updated rates
+                    const nights = Math.ceil((new Date(checkOutDate) - new Date(checkInDate)) / (1000 * 60 * 60 * 24));
+                    const totalPrice = apartmentRates[apartmentType] * nights;
+                    bookingDetails = { customerName, contactNumber, serviceType: 'Apartment Booking', apartmentType, checkInDate, checkOutDate, guests, totalPrice, paymentMethod: paymentMethodValue };
+                }
+
+                bookings.push(bookingDetails);
+                localStorage.setItem('bookings', JSON.stringify(bookings));
+                alert(`${serviceTypeValue} booked successfully!`);
+                serviceBookingForm.reset();
+                totalPriceDisplay.value = '₦0';
+                carDetails.style.display = 'none';
+                apartmentDetails.style.display = 'none';
+                servicesSection.style.display = 'none';
+                bookServiceBtn.disabled = true;
+            });
+
+            clearFormBtn.addEventListener('click', () => {
+                serviceBookingForm.reset();
+                totalPriceDisplay.value = '₦0';
+                carDetails.style.display = 'none';
+                apartmentDetails.style.display = 'none';
+                servicesSection.style.display = 'none';
+                bookServiceBtn.disabled = true;
+                updateButtonState();
+            });
+
+            bookApartmentBtn.addEventListener('click', () => {
+                if (serviceType.value === 'apartment' && !bookApartmentBtn.disabled) {
+                    apartmentModal.style.display = 'block';
                 }
             });
 
-            // Bank Transfer Modal
-            showBankDetailsBtn.addEventListener('click', function() {
-                bankModal.style.display = 'block';
-            });
-
-            submitReceiptBtn.addEventListener('click', function() {
+            submitReceiptBtn.addEventListener('click', () => {
                 const receiptUpload = document.getElementById('receipt-upload');
                 if (receiptUpload.files.length > 0) {
-                    this.dataset.verified = 'true';
-                    this.textContent = 'Verified';
-                    this.classList.add('btn-success');
+                    submitReceiptBtn.textContent = 'Verified';
+                    submitReceiptBtn.classList.add('btn-success');
                     bankModal.style.display = 'none';
-                    saveBookingBtn.disabled = false;
+                    bookServiceBtn.disabled = false;
+                    updateButtonState();
                 } else {
                     alert('Please upload a receipt image (PNG/JPG).');
                 }
             });
 
-            // PayPal Payment (Simulated)
-            payWithPaypal.addEventListener('click', function() {
-                const totalAmount = calculateTotalAmount();
-                if (totalAmount <= 0) {
-                    alert('Please fill in booking details to calculate the amount.');
-                    return;
-                }
-                if (window.paypal) {
-                    paypal.Buttons({
-                        createOrder: function(data, actions) {
-                            return actions.order.create({
-                                purchase_units: [{
-                                    amount: {
-                                        value: totalAmount.toFixed(2),
-                                        currency_code: 'USD'
-                                    }
-                                }]
-                            });
-                        },
-                        onApprove: function(data, actions) {
-                            return actions.order.capture().then(function(details) {
-                                alert('PayPal payment successful! Booking will be saved.');
-                                saveBookingBtn.disabled = false;
-                                bookingForm.submit();
-                            });
-                        },
-                        onError: function(err) {
-                            alert('PayPal payment failed. Please try again.');
-                        }
-                    }).render('#paypal-payment');
-                } else {
-                    alert('PayPal SDK not loaded. Please check your internet connection.');
-                }
+            const closeModal = document.querySelector('#bank-modal .close');
+            closeModal.addEventListener('click', () => {
+                bankModal.style.display = 'none';
             });
 
-            // Flutterwave Payment
-            payWithFlutterwave.addEventListener('click', function() {
-                const totalAmount = calculateTotalAmount();
-                if (totalAmount <= 0) {
-                    alert('Please fill in booking details to calculate the amount.');
-                    return;
-                }
-
-                const email = document.getElementById('email').value;
-                const phone = document.getElementById('phone').value;
-                const firstName = document.getElementById('firstName').value;
-                const lastName = document.getElementById('lastName').value;
-
-                FlutterwaveCheckout({
-                    public_key: 'FLWPUBK_TEST-6e1e6b8f0a8b4c6d9e2f3a5b7c8d9e0f1g2h3i4j5k6l7m8n9o0p', // Replace with your live key
-                    tx_ref: 'tx_' + Date.now(),
-                    amount: totalAmount,
-                    currency: 'USD',
-                    payment_options: 'card, bank transfer, ussd, mobile money',
-                    customer: {
-                        email: email,
-                        phone_number: phone,
-                        name: `${firstName} ${lastName}`,
-                    },
-                    callback: function (payment) {
-                        if (payment.status === 'successful') {
-                            alert('Flutterwave payment successful! Booking will be saved.');
-                            saveBookingBtn.disabled = false;
-                            bookingForm.submit();
-                        } else {
-                            alert('Flutterwave payment failed. Please try again.');
-                        }
-                    },
-                    customizations: {
-                        title: 'Trilogy Homes Booking Payment',
-                        description: 'Payment for room booking',
-                        logo: 'https://your-logo-url.com/logo.png', // Replace with your logo URL
-                    },
-                });
-            });
-
-            bookingForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const method = paymentMethod.value;
-                if (method === 'paypal') {
-                    payWithPaypal.click();
-                } else if (method === 'flutterwave') {
-                    payWithFlutterwave.click();
-                } else if (method && calculateTotalAmount() > 0 && 
-                          ((method === 'cash' && verifyCashBtn.dataset.verified) || 
-                           (method === 'bankTransfer' && submitReceiptBtn.dataset.verified))) {
-                    window.location.href = 'viewnewbooking.html';
-                } else {
-                    alert('Please complete the payment process or fill in booking details.');
-                }
-            });
-
-            // Room type changes available room numbers
-            const roomTypeSelect = document.getElementById('roomType');
-            const roomNumberSelect = document.getElementById('roomNumber');
-            
-            roomTypeSelect.addEventListener('change', function() {
-                const selectedType = this.value;
-                roomNumberSelect.innerHTML = '<option value="">Select Room Number</option>';
-                if (selectedType === 'standard') {
-                    roomNumberSelect.innerHTML += `
-                        <option value="101">101 - Standard (Available)</option>
-                        <option value="103">103 - Standard (Available)</option>
-                        <option value="105">105 - Standard (Available)</option>
-                    `;
-                } else if (selectedType === 'deluxe') {
-                    roomNumberSelect.innerHTML += `
-                        <option value="201">201 - Deluxe (Available)</option>
-                        <option value="202">202 - Deluxe (Available)</option>
-                        <option value="204">204 - Deluxe (Available)</option>
-                    `;
-                } else if (selectedType === 'suite') {
-                    roomNumberSelect.innerHTML += `
-                        <option value="301">301 - Suite (Available)</option>
-                        <option value="302">302 - Suite (Available)</option>
-                    `;
-                } else if (selectedType === 'executive') {
-                    roomNumberSelect.innerHTML += `
-                        <option value="401">401 - Executive Suite (Available)</option>
-                        <option value="402">402 - Executive Suite (Available)</option>
-                    `;
-                } else if (selectedType === 'family') {
-                    roomNumberSelect.innerHTML += `
-                        <option value="501">501 - Family Room (Available)</option>
-                        <option value="502">502 - Family Room (Available)</option>
-                    `;
-                }
-                calculateTotalAmount();
+            const closeApartmentModal = document.querySelector('#apartment-modal .close');
+            closeApartmentModal.addEventListener('click', () => {
+                apartmentModal.style.display = 'none';
             });
         });
     </script>
